@@ -159,7 +159,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 1, g: 0.3226415, b: 0.3226415, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -244,10 +244,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 114064efd37d198438d28bcd969cab51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  health: 3.97
-  speed: 0
+  maxHealth: 23
+  health: 6.34
+  speed: -0.19
+  maxSpeed: 4
   childTransform: {fileID: 0}
+  myProperty: 92
 --- !u!4 &797182029
 Transform:
   m_ObjectHideFlags: 0
