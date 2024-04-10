@@ -40,7 +40,8 @@ public class ShowPropertyAttributeDrawer : PropertyDrawer
         }
     }
 
-    private object DrawProperty(Rect position, SerializedPropertyType propertyType, Type type, object value, GUIContent label)
+    private object DrawProperty(Rect position, SerializedPropertyType propertyType, 
+        Type type, object value, GUIContent label)
     {
         switch (propertyType)
         {

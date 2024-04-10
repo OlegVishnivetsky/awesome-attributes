@@ -5,32 +5,30 @@ public class Testing : MonoBehaviour
     [Title("Health", "Player health")]
     [GUIColor("#faab09")]
     [SerializeField] private float maxHealth;
-    [SerializeField] private float health;
+    [Button("ButtonPressedDebug", "Show Current Helth")]
+    [SerializeField] private float currentHealth;
     [GUIColor("#ff00ff")]
     [SeparationLine(1, 3)]
     [SerializeField] private float speed;
+    [ShowProperty("MyProperty")]
+    [SerializeField] private int myProperty = 43;
     [SerializeField, Readonly] public float maxSpeed = 4;
     [SerializeField] private Transform childTransform;
-
-    [ShowProperty("MyProperty")]
-    [SerializeField] private int myProperty = 0;
+    [SerializeField] private Sprite sprite;
+    [GUIColor("#ff00ff")]
+    [SerializeField, Lable("Max Speed")] private int veryLongFieldNameForMaxSpeed = 20;
 
     public int MyProperty
     {
         get { return myProperty; }
         set
         {
-            if (myProperty > 100)
-            {
-                return;
-            }
-
             myProperty = value;
         }
     }
 
-    public void TestDebug()
+    public void ButtonPressedDebug()
     {
-        Debug.Log("Button pressed");
+        Debug.Log($"Current health {currentHealth}");
     }
 }

@@ -94,7 +94,7 @@ public class TitleAttributeDrawer : DecoratorDrawer
     }
 
     /// <summary>
-    /// Draw separator line after title 
+    /// Draws separator line after title 
     /// </summary>
     /// <param name="titleAttributes"></param>
     /// <param name="position"></param>
@@ -110,7 +110,7 @@ public class TitleAttributeDrawer : DecoratorDrawer
     }
 
     /// <summary>
-    /// Draw lable field
+    /// Draws lable field
     /// </summary>
     /// <param name="text"></param>
     /// <param name="style"></param>
@@ -122,7 +122,7 @@ public class TitleAttributeDrawer : DecoratorDrawer
     }
 
     /// <summary>
-    /// Return TextAnchor depending on the title TextAlignments
+    /// Returns TextAnchor depending on the title TextAlignments
     /// </summary>
     /// <param name="titleAttributes"></param>
     /// <returns></returns>

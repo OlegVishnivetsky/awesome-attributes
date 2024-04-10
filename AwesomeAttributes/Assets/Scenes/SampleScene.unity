@@ -244,12 +244,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 114064efd37d198438d28bcd969cab51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 23
-  health: 6.34
-  speed: -0.19
+  maxHealth: 27.72
+  currentHealth: 4.49
+  speed: -3.7
+  myProperty: 387
   maxSpeed: 4
   childTransform: {fileID: 0}
-  myProperty: 92
+  sprite: {fileID: 0}
+  veryLongFieldNameForMaxSpeed: 11
 --- !u!4 &797182029
 Transform:
   m_ObjectHideFlags: 0

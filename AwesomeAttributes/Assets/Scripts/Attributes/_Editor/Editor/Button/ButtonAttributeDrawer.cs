@@ -1,4 +1,3 @@
-using System;
 using System.Reflection;
 using UnityEditor;
 using UnityEngine;
@@ -8,8 +7,33 @@ public class ButtonAttributeDrawer : PropertyDrawer
 {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
-        base.OnGUI(position, property, label);
+        ButtonAttribute buttonAttribute = attribute as ButtonAttribute;
+        DrawPropertyFieldAndButton(position, property, label, buttonAttribute);
+    }
 
-        Debug.Log("Button gui");
+    /// <summary>
+    /// Draws a property field and a button below that property
+    /// </summary>
+    /// <param name="position"></param>
+    /// <param name="property"></param>
+    /// <param name="label"></param>
+    /// <param name="buttonAttribute"></param>
+    private static void DrawPropertyFieldAndButton(Rect position, SerializedProperty property, 
+        GUIContent label, ButtonAttribute buttonAttribute)
+    {
+        Object targetObject = property.serializedObject.targetObject;
+        MethodInfo method = targetObject.GetType().GetMethod(buttonAttribute.MethodName);
+
+        EditorGUILayout.BeginVertical();
+
+        EditorGUI.PropertyField(position, property, label);
+
+        if (GUILayout.Button(buttonAttribute.Lable,
+            GUILayout.Height(buttonAttribute.Height)))
+        {
+            method.Invoke(targetObject, null);
+        }
+     
+        EditorGUILayout.EndVertical();
     }
 }
