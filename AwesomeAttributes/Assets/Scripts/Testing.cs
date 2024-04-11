@@ -16,7 +16,8 @@ public class Testing : MonoBehaviour
     [SerializeField] private Transform childTransform;
     [SerializeField] private Sprite sprite;
     [GUIColor("#ff00ff")]
-    [SerializeField, Lable("Max Speed")] private int veryLongFieldNameForMaxSpeed = 20;
+    [SerializeField, Label("Max Speed")] private int veryLongFieldNameForMaxSpeed = 20;
+    [SerializeField, WithoutLabel] private Vector3 withoutLabelVector;
 
     public int MyProperty
     {

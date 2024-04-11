@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Changes GUI color
+/// </summary>
 public class GUIColorAttribute : PropertyAttribute
 {
     public readonly Color Color;

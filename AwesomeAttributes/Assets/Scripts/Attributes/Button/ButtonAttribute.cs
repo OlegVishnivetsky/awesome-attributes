@@ -1,7 +1,9 @@
 using System;
-using System.Reflection;
 using UnityEngine;
 
+/// <summary>
+/// Shows a button under the field to which you placed the attribute
+/// </summary>
 [AttributeUsage(AttributeTargets.All, AllowMultiple = false, Inherited = true)]
 public class ButtonAttribute : PropertyAttribute
 {

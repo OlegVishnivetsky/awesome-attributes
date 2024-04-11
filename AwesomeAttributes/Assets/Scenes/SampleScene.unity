@@ -252,6 +252,7 @@ MonoBehaviour:
   childTransform: {fileID: 0}
   sprite: {fileID: 0}
   veryLongFieldNameForMaxSpeed: 11
+  withoutLabelVector: {x: -2, y: -1.25, z: 1.08}
 --- !u!4 &797182029
 Transform:
   m_ObjectHideFlags: 0
