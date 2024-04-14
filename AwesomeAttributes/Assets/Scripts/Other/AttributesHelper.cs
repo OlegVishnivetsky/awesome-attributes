@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
@@ -50,5 +51,70 @@ public class AttributesHelper
             default:
                 throw new NotImplementedException("Unimplemented propertyType " + propertyType + ".");
         }
+    }
+
+    public static FieldInfo GetFieldInfo(string fieldName, SerializedProperty property, 
+        out UnityEngine.Object targetObject)
+    {
+        targetObject = property.serializedObject.targetObject;
+        FieldInfo fieldInfoToReturn = targetObject.GetType()
+            .GetField(fieldName,
+            BindingFlags.Instance 
+           | BindingFlags.Public 
+           | BindingFlags.NonPublic);
+
+        return fieldInfoToReturn;
+    }
+
+    public static FieldInfo GetFieldInfo(string fieldName, UnityEngine.Object targetObject)
+    {
+        FieldInfo fieldInfoToReturn = targetObject.GetType()
+            .GetField(fieldName,
+              BindingFlags.Instance 
+            | BindingFlags.Public 
+            | BindingFlags.NonPublic 
+            | BindingFlags.Static 
+            | BindingFlags.DeclaredOnly);
+
+        return fieldInfoToReturn;
+    }
+
+    public static PropertyInfo GetPropertyInfo(string propertyName, UnityEngine.Object targetObject)
+    {
+        PropertyInfo propertyInfoToReturn = targetObject.GetType()
+            .GetProperty(propertyName,
+              BindingFlags.Instance
+            | BindingFlags.Public
+            | BindingFlags.NonPublic
+            | BindingFlags.Static
+            | BindingFlags.DeclaredOnly);
+
+        return propertyInfoToReturn;
+    }
+
+    public static MethodInfo GetMethodInfo(string methodName, UnityEngine.Object targetObject)
+    {
+        MethodInfo methodInfoToReturn = targetObject.GetType()
+            .GetMethod(methodName,
+              BindingFlags.Instance
+            | BindingFlags.Public
+            | BindingFlags.NonPublic
+            | BindingFlags.Static
+            | BindingFlags.DeclaredOnly);
+
+        return methodInfoToReturn;
+    }
+
+    public static UnityEngine.Object GetTargetObject(SerializedProperty property)
+    {
+        UnityEngine.Object targetObjectToReturn = property.serializedObject.targetObject;
+
+        return targetObjectToReturn;
+    }
+
+    public static object GetMethodReturnValue(MethodInfo methodInfo, UnityEngine.Object targetObject, 
+        object[] parameters = null)
+    {
+        return methodInfo.Invoke(targetObject, parameters);
     }
 }

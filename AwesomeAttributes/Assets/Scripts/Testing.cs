@@ -18,8 +18,12 @@ public class Testing : MonoBehaviour
     [GUIColor("#ff00ff")]
     [SerializeField, Label("Max Speed")] private int veryLongFieldNameForMaxSpeed = 20;
     [SerializeField, WithoutLabel] private Vector3 withoutLabelVector;
+    [SerializeField] private bool showHidenValue;
 
-    public int MyProperty
+    [ShowIf("||", "showHidenValue", "CheckCondition")]
+    [SerializeField] private int showMePlease = 1;
+
+    public int MyProperty 
     {
         get { return myProperty; }
         set
@@ -31,5 +35,10 @@ public class Testing : MonoBehaviour
     public void ButtonPressedDebug()
     {
         Debug.Log($"Current health {currentHealth}");
+    }
+
+    public bool CheckCondition()
+    {
+        return true;
     }
 }

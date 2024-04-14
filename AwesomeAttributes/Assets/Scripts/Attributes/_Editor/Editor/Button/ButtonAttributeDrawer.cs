@@ -21,8 +21,8 @@ public class ButtonAttributeDrawer : PropertyDrawer
     private static void DrawPropertyFieldAndButton(Rect position, SerializedProperty property, 
         GUIContent label, ButtonAttribute buttonAttribute)
     {
-        Object targetObject = property.serializedObject.targetObject;
-        MethodInfo method = targetObject.GetType().GetMethod(buttonAttribute.MethodName);
+        Object targetObject = AttributesHelper.GetTargetObject(property);
+        MethodInfo method = AttributesHelper.GetMethodInfo(buttonAttribute.MethodName, targetObject);
 
         EditorGUILayout.BeginVertical();
 
