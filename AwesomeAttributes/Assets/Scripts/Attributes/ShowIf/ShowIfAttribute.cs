@@ -6,8 +6,8 @@ public class ShowIfAttribute : PropertyAttribute
     public readonly string[] Conditions;
     public readonly string ConditionsOperator;
 
-    public readonly Type EnumType;
-    public readonly Enum EnumValue;
+    public readonly object EnumValue;
+    public readonly string EnumFieldName;
 
     public readonly ShowIfAttributeType ShowIfAttributeType;
 
@@ -26,10 +26,10 @@ public class ShowIfAttribute : PropertyAttribute
         ShowIfAttributeType = ShowIfAttributeType.MultipleConditions;
     }
 
-    public ShowIfAttribute(Type enumType, Enum enumValue)
+    public ShowIfAttribute(object enumValue, string enumFieldName)
     {
-        EnumType = enumType;
         EnumValue = enumValue;
+        EnumFieldName = enumFieldName;
 
         ShowIfAttributeType = ShowIfAttributeType.EnumCondition;
     }

@@ -19,8 +19,9 @@ public class Testing : MonoBehaviour
     [SerializeField, Label("Max Speed")] private int veryLongFieldNameForMaxSpeed = 20;
     [SerializeField, WithoutLabel] private Vector3 withoutLabelVector;
     [SerializeField] private bool showHidenValue;
+    [SerializeField] private ShowIfTestEnum showIfEnumTest;
 
-    [ShowIf("||", "showHidenValue", "CheckCondition")]
+    [ShowIf(ShowIfTestEnum.Show, "showIfEnumTest")]
     [SerializeField] private int showMePlease = 1;
 
     public int MyProperty 
@@ -41,4 +42,10 @@ public class Testing : MonoBehaviour
     {
         return true;
     }
+}
+
+public enum ShowIfTestEnum
+{
+    Show,
+    Hide
 }

@@ -22,7 +22,7 @@ public class ShowIfAttributeDrawer : PropertyDrawer
                 DrawShowIfMultipleConditionsType(property, label, showIfAttribute);
                 break;
             case ShowIfAttributeType.EnumCondition:
-
+                DrawShowIfEnumConditionType(position, property, label, showIfAttribute);
                 break;
 
             default:
@@ -46,6 +46,8 @@ public class ShowIfAttributeDrawer : PropertyDrawer
             return 0f;
         }
     }
+
+    #region [ShowIf] One Condition Type
 
     private void DrawShowIfOneConditionType(Rect position, SerializedProperty property, 
         GUIContent label, ShowIfAttribute showIfAttribute)
@@ -96,7 +98,9 @@ public class ShowIfAttributeDrawer : PropertyDrawer
                 showIfAttribute.Conditions[0]);
         }
     }
+    #endregion [ShowIf] One Condition Type
 
+    #region [ShowIf] Multiple Condition Type
     private void DrawShowIfMultipleConditionsType(SerializedProperty property,
         GUIContent label, ShowIfAttribute showIfAttribute)
     {
@@ -165,6 +169,53 @@ public class ShowIfAttributeDrawer : PropertyDrawer
 
         return conditionsToReturn;
     }
+    #endregion [ShowIf] One Condition Type
+
+    #region [ShowIf] Enum Condition Type
+
+    public void DrawShowIfEnumConditionType(Rect position, SerializedProperty property,
+        GUIContent label, ShowIfAttribute showIfAttribute)
+    {
+        Object targetObject = AttributesHelper.GetTargetObject(property);
+        System.Enum enumValue = GetEnumValueByName(targetObject, showIfAttribute.EnumFieldName);
+
+        if (enumValue.GetType().GetCustomAttribute<System.FlagsAttribute>() == null)
+        {
+            isPropertyShown = showIfAttribute.EnumValue.Equals(enumValue);
+        }
+        else
+        {
+            isPropertyShown = enumValue.HasFlag((System.Enum)showIfAttribute.EnumValue);
+        }
+    }
+
+    private System.Enum GetEnumValueByName(Object targetObject, string enumFieldName)
+    {
+        FieldInfo enumFieldInfo = AttributesHelper.GetFieldInfo(enumFieldName, targetObject);
+
+        if (enumFieldInfo != null && enumFieldInfo.FieldType.IsSubclassOf(typeof(System.Enum)))
+        {
+            return (System.Enum)enumFieldInfo.GetValue(targetObject);
+        }
+
+        MethodInfo enumMethodInfo = AttributesHelper.GetMethodInfo(enumFieldName, targetObject);
+
+        if (enumMethodInfo != null && enumMethodInfo.ReturnType.IsSubclassOf(typeof(System.Enum)))
+        {
+            return (System.Enum)enumMethodInfo.Invoke(targetObject, null);
+        }
+
+        PropertyInfo enumPropertyInfo = AttributesHelper.GetPropertyInfo(enumFieldName, targetObject);
+
+        if (enumPropertyInfo != null && enumPropertyInfo.PropertyType.IsSubclassOf(typeof(System.Enum)))
+        {
+            return (System.Enum)enumPropertyInfo.GetValue(targetObject);
+        }
+
+        return null;
+    }
+
+    #endregion [ShowIf] Enum Condition Type
 
     private bool IsFieldBoolType(FieldInfo fieldInfo)
     {

@@ -254,6 +254,7 @@ MonoBehaviour:
   veryLongFieldNameForMaxSpeed: 11
   withoutLabelVector: {x: -2, y: -1.25, z: 1.08}
   showHidenValue: 0
+  showIfEnumTest: 1
   showMePlease: 236
 --- !u!4 &797182029
 Transform:
