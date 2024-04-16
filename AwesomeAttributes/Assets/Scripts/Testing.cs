@@ -24,6 +24,9 @@ public class Testing : MonoBehaviour
     [ShowIf(ShowIfTestEnum.Show, "showIfEnumTest")]
     [SerializeField] private int showMePlease = 1;
 
+    [Required]
+    [SerializeField] private GameObject requiredObject;
+
     public int MyProperty 
     {
         get { return myProperty; }

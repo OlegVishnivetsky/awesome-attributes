@@ -337,6 +337,7 @@
 "Assets/Scripts/Attributes/GUIColor/GUIColorAttribute.cs"
 "Assets/Scripts/Attributes/Label/LabelAttribute.cs"
 "Assets/Scripts/Attributes/Readonly/ReadonlyAttribute.cs"
+"Assets/Scripts/Attributes/Required/RequiredAttribute.cs"
 "Assets/Scripts/Attributes/Separator/SeparationLineAttribute.cs"
 "Assets/Scripts/Attributes/ShowIf/ShowIfAttribute.cs"
 "Assets/Scripts/Attributes/ShowIf/ShowIfAttributeType.cs"
