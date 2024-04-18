@@ -256,7 +256,8 @@ MonoBehaviour:
   showHidenValue: 0
   showIfEnumTest: 0
   showMePlease: 236
-  requiredObject: {fileID: 0}
+  requiredObject: {fileID: 519420028}
+  minMaxValue: {x: 4.686353, y: 12.535511}
 --- !u!4 &797182029
 Transform:
   m_ObjectHideFlags: 0

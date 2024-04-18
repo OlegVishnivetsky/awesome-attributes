@@ -336,6 +336,8 @@
 "Assets/Scripts/Attributes/Button/ButtonAttribute.cs"
 "Assets/Scripts/Attributes/GUIColor/GUIColorAttribute.cs"
 "Assets/Scripts/Attributes/Label/LabelAttribute.cs"
+"Assets/Scripts/Attributes/MinMaxSlider/MinMaxSliderAttribute.cs"
+"Assets/Scripts/Attributes/MinMaxSlider/MinMaxSliderType.cs"
 "Assets/Scripts/Attributes/Readonly/ReadonlyAttribute.cs"
 "Assets/Scripts/Attributes/Required/RequiredAttribute.cs"
 "Assets/Scripts/Attributes/Separator/SeparationLineAttribute.cs"

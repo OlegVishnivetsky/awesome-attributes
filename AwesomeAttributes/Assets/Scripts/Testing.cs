@@ -27,6 +27,9 @@ public class Testing : MonoBehaviour
     [Required]
     [SerializeField] private GameObject requiredObject;
 
+    [MinMaxSlider(0, 20)]
+    [SerializeField] private Vector2 minMaxValue;
+
     public int MyProperty 
     {
         get { return myProperty; }
