@@ -254,8 +254,9 @@ MonoBehaviour:
   veryLongFieldNameForMaxSpeed: 11
   withoutLabelVector: {x: -2, y: -1.25, z: 1.08}
   showHidenValue: 0
-  showIfEnumTest: 0
-  showMePlease: 236
+  showIfEnumTest: 1
+  showMePlease: 229
+  readonlyHide: 24
   requiredObject: {fileID: 519420028}
   minMaxValue: {x: 4.686353, y: 12.535511}
 --- !u!4 &797182029
