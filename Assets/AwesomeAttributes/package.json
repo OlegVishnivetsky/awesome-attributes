@@ -1,0 +1,20 @@
+{
+  "name": "com.cherrydev.awesomeattributes",
+  "version": "1.0.0",
+  "displayName": "AwesomeAttributes",
+  "description": "Unity asset designed to speed up and improve your development process. Adds a large number of attributes with which you can make your inspector more beautiful and convenient.",
+  "unity": "2019.1",
+  "dependencies": {},
+
+  "keywords": [
+    "attributes",
+    "editor",
+    "inspector"
+  ],
+
+  "author": {
+    "name": "Oleg Vishnivetsky",
+    "email": "olegmroleg@gmail.com",
+    "url": "https://github.com/OlegVishnivetsky"
+  }
+}
