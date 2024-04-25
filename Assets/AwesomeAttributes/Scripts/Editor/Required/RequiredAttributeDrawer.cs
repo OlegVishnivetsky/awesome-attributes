@@ -4,47 +4,64 @@ using UnityEditor;
 [CustomPropertyDrawer(typeof(RequiredAttribute))]
 public class RequiredAttributeDrawer : PropertyDrawer
 {
+    private Rect propertyRect;
+    private float totalHeight;
+
+    private const float HelpBoxHeight = 37f;
+    private const float SpaceBetweenHelpBox = 2f;
+
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
-        HandlePropertyFieldDrawing(position, property, label);
+        propertyRect = new Rect(position.x, position.y, 
+            position.width, EditorGUI.GetPropertyHeight(property));
+
+        HandlePropertyFieldDrawing(property, label);
     }
 
-    private void HandlePropertyFieldDrawing(Rect position, SerializedProperty property,
+    public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+    { 
+        return totalHeight; 
+    }
+
+    private void HandlePropertyFieldDrawing(SerializedProperty property,
         GUIContent label)
     {
         RequiredAttribute requiredAttribute = attribute as RequiredAttribute;
 
         if (!property.objectReferenceValue)
         {
-            DrawFieldWithHelpBox(position, property, label, requiredAttribute);
+            DrawFieldWithHelpBox(property, label, requiredAttribute);
         }
         else
         {
-            DrawFieldWithOutHelpBox(position, property, label);
+            DrawFieldWithOutHelpBox(property, label);
         }
     }
 
-    private void DrawFieldWithHelpBox(Rect position, SerializedProperty property, 
+    private void DrawFieldWithHelpBox(SerializedProperty property, 
         GUIContent label, RequiredAttribute requiredAttribute)
     {
-        EditorGUILayout.BeginVertical();
-        EditorGUI.PropertyField(position, property, label);
+        Rect helpBoxRect = new Rect(propertyRect.xMin, propertyRect.yMax + SpaceBetweenHelpBox, 
+            propertyRect.width, HelpBoxHeight);
+        EditorGUI.PropertyField(propertyRect, property, label);
+
+        totalHeight = propertyRect.height + HelpBoxHeight;
 
         if (requiredAttribute.Message == null)
         {
-            EditorGUILayout.HelpBox($"Field \"{property.name}\" is required", MessageType.Error);
+            EditorGUI.HelpBox(helpBoxRect, $"Field \"{property.name}\" is required", 
+                MessageType.Error);
         }
         else
         {
-            EditorGUILayout.HelpBox(requiredAttribute.Message, MessageType.Error);
+            EditorGUI.HelpBox(helpBoxRect, requiredAttribute.Message, MessageType.Error);
         }
-
-        EditorGUILayout.EndVertical();
     }
 
-    private void DrawFieldWithOutHelpBox(Rect position, SerializedProperty property,
+    private void DrawFieldWithOutHelpBox(SerializedProperty property,
         GUIContent label)
     {
-        EditorGUI.PropertyField(position, property, label);
+        totalHeight = 18f;
+        EditorGUI.PropertyField(propertyRect, property, label);
     }
 }
