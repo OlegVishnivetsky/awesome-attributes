@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 
 [CustomPropertyDrawer(typeof(ReadonlyIfAttribute))]
-public class ReadonlyIfAttributeDrawer : ShowIfAttributeDrawerBase
+public class ReadonlyIfAttributeDrawer : ConditionalAttributeDrawerBase
 {
     protected override void DrawProperty(Rect position, SerializedProperty property, GUIContent label)
     {
@@ -12,5 +12,15 @@ public class ReadonlyIfAttributeDrawer : ShowIfAttributeDrawerBase
             EditorGUI.PropertyField(position, property, label);
             GUI.enabled = true;
         }
+        else
+        {
+            EditorGUI.PropertyField(position, property, label);
+        }
+    }
+
+    public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+    {
+        Debug.Log(base.GetPropertyHeight(property, label));
+        return base.GetPropertyHeight(property, label);
     }
 }

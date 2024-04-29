@@ -5,13 +5,13 @@ using UnityEditor;
 using UnityEngine;
 
 
-public abstract class ShowIfAttributeDrawerBase : PropertyDrawer
+public abstract class ConditionalAttributeDrawerBase : PropertyDrawer
 {
     protected bool isPropertyShown;
 
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
-        ShowIfAttributeBase showIfAttribute = attribute as ShowIfAttributeBase;
+        ConditionalAttributeBase showIfAttribute = attribute as ConditionalAttributeBase;
 
         switch (showIfAttribute.ShowIfAttributeType)
         {
@@ -30,23 +30,11 @@ public abstract class ShowIfAttributeDrawerBase : PropertyDrawer
         }
 
         DrawProperty(position, property, label);
-    }
-
-    public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
-    {
-        if (isPropertyShown)
-        {
-            return base.GetPropertyHeight(property, label);
-        }
-        else
-        {
-            return 0f;
-        }
-    }
+    } 
 
     protected abstract void DrawProperty(Rect position, SerializedProperty property, GUIContent label);
 
-    private void HandleShowIfAttributeType(ShowIfAttributeType showIfAttributeType, ShowIfAttributeBase 
+    private void HandleShowIfAttributeType(ShowIfAttributeType showIfAttributeType, ConditionalAttributeBase 
         showIfAttribute, Rect position, SerializedProperty property, GUIContent label)
     {
         switch (showIfAttributeType)
@@ -69,7 +57,7 @@ public abstract class ShowIfAttributeDrawerBase : PropertyDrawer
     #region [ShowIf] One Condition Type
 
     private void DrawShowIfOneConditionType(Rect position, SerializedProperty property,
-        GUIContent label, ShowIfAttributeBase showIfAttribute)
+        GUIContent label, ConditionalAttributeBase showIfAttribute)
     {
         Object targetObject = AttributesHelper.GetTargetObject(property);
 
@@ -85,7 +73,7 @@ public abstract class ShowIfAttributeDrawerBase : PropertyDrawer
     }
 
     private void DrawShowIfPropertyWithMethodCondition(Rect position, SerializedProperty property, GUIContent label,
-        ShowIfAttributeBase showIfAttribute, Object targetObject,
+        ConditionalAttributeBase showIfAttribute, Object targetObject,
         FieldInfo conditionFieldInfo, MethodInfo conditionMethodInfo)
     {
         if (IsMethodReturnBoolType(conditionMethodInfo))
@@ -102,7 +90,7 @@ public abstract class ShowIfAttributeDrawerBase : PropertyDrawer
     }
 
     private void DrawShowIfPropertyWithFieldCondition(SerializedProperty property, GUIContent label,
-        ShowIfAttributeBase showIfAttribute, Object targetObject, FieldInfo conditionFieldInfo,
+        ConditionalAttributeBase showIfAttribute, Object targetObject, FieldInfo conditionFieldInfo,
         MethodInfo conditionMethodInfo)
     {
         if (IsFieldBoolType(conditionFieldInfo))
@@ -120,7 +108,7 @@ public abstract class ShowIfAttributeDrawerBase : PropertyDrawer
     #endregion [ShowIf] One Condition Type
 
     #region [ShowIf] Multiple Condition Type
-    private void DrawShowIfMultipleConditionsType(SerializedProperty property, ShowIfAttributeBase showIfAttribute)
+    private void DrawShowIfMultipleConditionsType(SerializedProperty property, ConditionalAttributeBase showIfAttribute)
     {
         List<bool> conditionsList = GetAllConitions(AttributesHelper.GetTargetObject(property),
             showIfAttribute.Conditions);
@@ -192,7 +180,7 @@ public abstract class ShowIfAttributeDrawerBase : PropertyDrawer
     #region [ShowIf] Enum Condition Type
 
     public void DrawShowIfEnumConditionType(SerializedProperty property, 
-        ShowIfAttributeBase showIfAttribute)
+        ConditionalAttributeBase showIfAttribute)
     {
         Object targetObject = AttributesHelper.GetTargetObject(property);
         System.Enum enumValue = GetEnumValueByName(targetObject, showIfAttribute.EnumFieldName);

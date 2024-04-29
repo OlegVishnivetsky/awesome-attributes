@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-public class ShowIfAttributeBase : PropertyAttribute
+public class ConditionalAttributeBase : PropertyAttribute
 {
     public readonly string[] Conditions;
     public readonly string ConditionsOperator;
@@ -11,14 +11,14 @@ public class ShowIfAttributeBase : PropertyAttribute
 
     public readonly ShowIfAttributeType ShowIfAttributeType;
 
-    public ShowIfAttributeBase(string condition)
+    public ConditionalAttributeBase(string condition)
     {
         Conditions = new string[] { condition };
 
         ShowIfAttributeType = ShowIfAttributeType.OneCondition;
     }
 
-    public ShowIfAttributeBase(string conditionsOperator, params string[] conditions)
+    public ConditionalAttributeBase(string conditionsOperator, params string[] conditions)
     {
         ConditionsOperator = conditionsOperator;
         Conditions = conditions;
@@ -26,7 +26,7 @@ public class ShowIfAttributeBase : PropertyAttribute
         ShowIfAttributeType = ShowIfAttributeType.MultipleConditions;
     }
 
-    public ShowIfAttributeBase(object enumValue, string enumFieldName)
+    public ConditionalAttributeBase(object enumValue, string enumFieldName)
     {
         EnumValue = enumValue;
         EnumFieldName = enumFieldName;

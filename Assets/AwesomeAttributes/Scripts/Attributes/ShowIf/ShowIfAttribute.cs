@@ -1,4 +1,4 @@
-public class ShowIfAttribute : ShowIfAttributeBase
+public class ShowIfAttribute : ConditionalAttributeBase
 {
     public ShowIfAttribute(string condition) 
         : base(condition) { }

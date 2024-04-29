@@ -19,12 +19,13 @@ public class Testing : MonoBehaviour
     [SerializeField, Label("Max Speed")] private int veryLongFieldNameForMaxSpeed = 20;
     [SerializeField, WithoutLabel] private Vector3 withoutLabelVector;
     [SerializeField] private bool showHidenValue;
+    [SerializeField] private bool enableReadonly;
     [SerializeField] private ShowIfTestEnum showIfEnumTest;
 
-    [ShowIf(ShowIfTestEnum.Show, "showIfEnumTest")]
+    [ShowIf("showHidenValue")]
     [SerializeField] private int showMePlease = 1;
 
-    [ReadonlyIf(ShowIfTestEnum.Hide, "showIfEnumTest")]
+    [ReadonlyIf("enableReadonly")]
     [SerializeField] private int readonlyHide = 30;
 
     [Required]

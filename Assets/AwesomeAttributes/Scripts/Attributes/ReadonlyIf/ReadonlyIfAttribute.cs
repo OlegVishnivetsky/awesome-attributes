@@ -1,4 +1,4 @@
-public class ReadonlyIfAttribute : ShowIfAttributeBase
+public class ReadonlyIfAttribute : ConditionalAttributeBase
 {
     public ReadonlyIfAttribute(string condition)
         : base(condition) { }
