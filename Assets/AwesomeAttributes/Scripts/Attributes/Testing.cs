@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Testing : MonoBehaviour
@@ -29,12 +30,18 @@ public class Testing : MonoBehaviour
 
     [ReadonlyIf("enableReadonly")]
     [SerializeField] private int readonlyHide = 30;
+    [SerializeField, OnlyChildGameObjects] private Rigidbody2D onlyChildObjects;
 
     [Required]
     [SerializeField] private GameObject requiredObject;
 
     [MinMaxSlider(0, 20)]
     [SerializeField] private Vector2 minMaxValue;
+
+    private void Start()
+    {
+        Debug.Log(onlyChildObjects.name);
+    }
 
     public int MyProperty 
     {

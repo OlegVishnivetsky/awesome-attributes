@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEditor;
+using NUnit.Framework.Constraints;
 
 [CustomPropertyDrawer(typeof(RequiredAttribute))]
 public class RequiredAttributeDrawer : PropertyDrawer
@@ -50,11 +51,12 @@ public class RequiredAttributeDrawer : PropertyDrawer
         if (requiredAttribute.Message == null)
         {
             EditorGUI.HelpBox(helpBoxRect, $"Field \"{property.name}\" is required", 
-                MessageType.Error);
+                requiredAttribute.MessageType);
         }
         else
         {
-            EditorGUI.HelpBox(helpBoxRect, requiredAttribute.Message, MessageType.Error);
+            EditorGUI.HelpBox(helpBoxRect, requiredAttribute.Message,
+                requiredAttribute.MessageType);
         }
     }
 

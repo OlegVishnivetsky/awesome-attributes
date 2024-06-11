@@ -4,7 +4,6 @@ using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
-
 public abstract class ConditionalAttributeDrawerBase : PropertyDrawer
 {
     protected bool isPropertyShown;
