@@ -8,7 +8,8 @@ using UnityEngine;
 public class SeparationLineAttribute : PropertyAttribute
 {
     [Header("")]
-    public readonly float Spacing;
+    public readonly float TopSpacing;
+    public readonly float BottomSpacing;
     public readonly float Height;
     public readonly Color LineColor;
 
@@ -17,9 +18,11 @@ public class SeparationLineAttribute : PropertyAttribute
     /// </summary>
     /// <param name="height"></param>
     /// <param name="spacing"></param>
-    public SeparationLineAttribute(float height, float spacing = 1)
+    public SeparationLineAttribute(float height, float topSpacing = 1,
+        float bottomSpacing = 1)
     {
-        Spacing = spacing;
+        TopSpacing = topSpacing;
+        BottomSpacing = bottomSpacing;
         Height = height;
     }
 }

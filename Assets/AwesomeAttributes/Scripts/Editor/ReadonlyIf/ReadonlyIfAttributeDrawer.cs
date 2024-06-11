@@ -20,7 +20,6 @@ public class ReadonlyIfAttributeDrawer : ConditionalAttributeDrawerBase
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
-        Debug.Log(base.GetPropertyHeight(property, label));
         return base.GetPropertyHeight(property, label);
     }
 }

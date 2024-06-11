@@ -247,14 +247,14 @@ MonoBehaviour:
   maxHealth: 27.72
   currentHealth: 4.49
   speed: -3.7
-  myProperty: 387
   maxSpeed: 4
+  myProperty: 385
   childTransform: {fileID: 0}
   sprite: {fileID: 0}
   veryLongFieldNameForMaxSpeed: 11
   withoutLabelVector: {x: -2, y: -1.25, z: 1.08}
   showHidenValue: 0
-  enableReadonly: 0
+  enableReadonly: 1
   showIfEnumTest: 1
   showMePlease: 229
   readonlyHide: 24

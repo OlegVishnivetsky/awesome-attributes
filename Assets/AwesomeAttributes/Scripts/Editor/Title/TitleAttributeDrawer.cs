@@ -116,9 +116,7 @@ public class TitleAttributeDrawer : DecoratorDrawer
     /// <param name="style"></param>
     private void DrawTitle(string text, GUIStyle style)
     {
-        EditorGUILayout.BeginVertical();
         EditorGUILayout.LabelField(text, style);
-        EditorGUILayout.EndVertical();
     }
 
     /// <summary>

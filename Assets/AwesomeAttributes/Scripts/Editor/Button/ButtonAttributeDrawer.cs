@@ -24,8 +24,6 @@ public class ButtonAttributeDrawer : PropertyDrawer
         Object targetObject = AttributesHelper.GetTargetObject(property);
         MethodInfo method = AttributesHelper.GetMethodInfo(buttonAttribute.MethodName, targetObject);
 
-        EditorGUILayout.BeginVertical();
-
         EditorGUI.PropertyField(position, property, label);
 
         if (GUILayout.Button(buttonAttribute.Lable,
@@ -33,7 +31,5 @@ public class ButtonAttributeDrawer : PropertyDrawer
         {
             method.Invoke(targetObject, null);
         }
-     
-        EditorGUILayout.EndVertical();
     }
 }

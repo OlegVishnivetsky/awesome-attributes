@@ -11,8 +11,8 @@ public class SeparationLineAttributeDrawer : DecoratorDrawer
     {
         SeparationLineAttribute separatorAttribute = attribute as SeparationLineAttribute;
 
-        Rect separatorRect = new Rect(position.xMin, position.yMin + separatorAttribute.Spacing,
-            position.width, separatorAttribute.Height);
+        Rect separatorRect = new Rect(position.xMin, position.yMin 
+            + separatorAttribute.TopSpacing,position.width, separatorAttribute.Height);
 
         EditorGUI.DrawRect(separatorRect, AttributesParameters.SeparationLineColor);
     }
@@ -27,9 +27,9 @@ public class SeparationLineAttributeDrawer : DecoratorDrawer
         SeparationLineAttribute separatorAttribute = attribute as SeparationLineAttribute;
 
         float separatorTotalHeight = 
-            separatorAttribute.Spacing // Top padding
+            separatorAttribute.TopSpacing // Top padding
             + separatorAttribute.Height // Line height
-            + separatorAttribute.Spacing; // Bottom padding
+            + separatorAttribute.BottomSpacing; // Bottom padding
 
         return separatorTotalHeight;
     }

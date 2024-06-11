@@ -7,12 +7,14 @@ public class Testing : MonoBehaviour
     [SerializeField] private float maxHealth;
     [Button("ButtonPressedDebug", "Show Current Helth")]
     [SerializeField] private float currentHealth;
+
     [GUIColor("#ff00ff")]
-    [SeparationLine(1, 3)]
+    [SeparationLine(1, 10, 10)]
     [SerializeField] private float speed;
+    [SerializeField, Readonly] public float maxSpeed = 4;
+
     [ShowProperty("MyProperty")]
     [SerializeField] private int myProperty = 43;
-    [SerializeField, Readonly] public float maxSpeed = 4;
     [SerializeField] private Transform childTransform;
     [SerializeField] private Sprite sprite;
     [GUIColor("#ff00ff")]
