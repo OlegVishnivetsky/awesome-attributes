@@ -25,6 +25,77 @@
 2. Go to ‘Package Manager’ - + - ‘Add package from disk’  and select package.json file.
 
 ---
+# 📝 Documentation
+
+## 1. Title
+
+Draws a title and subtitle (optional). You can change the **text alignment** to Left/Center/Right. You can choose whether this text will be **bold**, have a **separation line** or not.
+
+```csharp
+    [Title("Health", "Player health")]
+    [SerializeField] private float maxHealth;
+    [SerializeField] private float currentHealth;
+```
+<img src="https://github.com/OlegVishnivetsky/awesome-attributes/assets/98222611/db28898a-d926-44f5-9b2a-d21042547a81">
+<img src="https://github.com/OlegVishnivetsky/awesome-attributes/assets/98222611/789cd02f-a969-4908-bebc-b620763d9976">
+
+## 2. GUI Color
+
+Everything is simple here. The attribute changes gui color. You can use it by specifying **color hex** or **rgba** in the parameters.
+
+```csharp
+    [GUIColor("#ff00ff")]
+    [SerializeField] private float maxHealth;
+    [GUIColor(255, 0, 0, 0.2f)]
+    [SerializeField] private float currentHealth;
+```
+<img src="https://github.com/OlegVishnivetsky/awesome-attributes/assets/98222611/aa6172c5-5c04-4916-bd93-6a2916378d7d">
+
+## 3. Separation Line
+
+Draws a separation line with **height, top spacing** and **bottom spacing.**
+
+```csharp
+    [SeparationLine(10)]
+
+    [SerializeField] private float maxHealth;
+    [SerializeField] private float currentHealth;
+
+    [SeparationLine(1, 10, 10)]
+
+    [SerializeField] private float speed;
+    [SerializeField] public float maxSpeed = 4;
+```
+<img src="https://github.com/OlegVishnivetsky/awesome-attributes/assets/98222611/e43cd314-ed3a-4923-9599-eba00bb6eab2">
+
+## 4. Label
+
+Changes the field name in the inspector, useful for long names. 
+
+```csharp
+    [Label("Short Name")]
+    [SerializeField] private float veryveryveryveryveryLong;
+```
+<img src="https://github.com/OlegVishnivetsky/awesome-attributes/assets/98222611/02c5de50-a68c-4c86-9136-f5e67175b7c9">
+
+## 5. ShowIf
+
+Shows the field in the inspector if the condition is true, otherwise hides it. May contain several conditions and enum.
+
+```csharp
+    [SerializeField] private bool showIfThisTrue;
+    [ShowIf("showIfThisTrue")]
+    [SerializeField] private int showMePlease;
+
+    [SerializeField] private ShowIfTestEnum showIfEnumTest;
+    [ShowIf(ShowIfTestEnum.Show, "showIfEnumTest")]
+    [SerializeField] private int showEnumTest;
+```
+<img src="https://github.com/OlegVishnivetsky/awesome-attributes/assets/98222611/0f8b3b7d-13b1-40ef-99a1-7d5cc8294efb">
+
+// TODO: Write documentation for the remaining attributes.
+
+---
 
 ⭐⭐⭐⭐⭐ If you want to add your attribute. Then please follow the folder structure as in the asset and make a pull request. Feel free to edit any code to suit your needs. If you find any bugs or have any questions, you can write about it to me by email, github or in reviews in the Unity Asset Store. I will also be pleased if you visit my itchio page.  😄
 
