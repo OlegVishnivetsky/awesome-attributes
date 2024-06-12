@@ -31,43 +31,67 @@
 
 Draws a title and subtitle (optional). You can change the **text alignment** to Left/Center/Right. You can choose whether this text will be **bold**, have a **separation line** or not.
 
-![Untitled](Awesome%20Attributes%20(Unity%20asset%20tool)%205e73a66631b54705a3dc7c82eb841e96/Untitled.png)
-
-![Untitled](Awesome%20Attributes%20(Unity%20asset%20tool)%205e73a66631b54705a3dc7c82eb841e96/Untitled%201.png)
-
-![Untitled](Awesome%20Attributes%20(Unity%20asset%20tool)%205e73a66631b54705a3dc7c82eb841e96/Untitled%202.png)
+```csharp
+    [Title("Health", "Player health")]
+    [SerializeField] private float maxHealth;
+    [SerializeField] private float currentHealth;
+```
+<img src="https://github.com/OlegVishnivetsky/awesome-attributes/assets/98222611/db28898a-d926-44f5-9b2a-d21042547a81">
+<img src="https://github.com/OlegVishnivetsky/awesome-attributes/assets/98222611/789cd02f-a969-4908-bebc-b620763d9976">
 
 ## 2. GUI Color
 
 Everything is simple here. The attribute changes gui color. You can use it by specifying **color hex** or **rgba** in the parameters.
 
-![Untitled](Awesome%20Attributes%20(Unity%20asset%20tool)%205e73a66631b54705a3dc7c82eb841e96/ffef2f3b-8d8e-4e05-a4b0-cbf059db9241.png)
-
-![Untitled](Awesome%20Attributes%20(Unity%20asset%20tool)%205e73a66631b54705a3dc7c82eb841e96/Untitled%203.png)
+```csharp
+    [GUIColor("#ff00ff")]
+    [SerializeField] private float maxHealth;
+    [GUIColor(255, 0, 0, 0.2f)]
+    [SerializeField] private float currentHealth;
+```
+<img src="https://github.com/OlegVishnivetsky/awesome-attributes/assets/98222611/aa6172c5-5c04-4916-bd93-6a2916378d7d">
 
 ## 3. Separation Line
 
 Draws a separation line with **height, top spacing** and **bottom spacing.**
 
-![Untitled](Awesome%20Attributes%20(Unity%20asset%20tool)%205e73a66631b54705a3dc7c82eb841e96/Untitled%204.png)
+```csharp
+    [SeparationLine(10)]
 
-![Untitled](Awesome%20Attributes%20(Unity%20asset%20tool)%205e73a66631b54705a3dc7c82eb841e96/Untitled%205.png)
+    [SerializeField] private float maxHealth;
+    [SerializeField] private float currentHealth;
+
+    [SeparationLine(1, 10, 10)]
+
+    [SerializeField] private float speed;
+    [SerializeField] public float maxSpeed = 4;
+```
+<img src="https://github.com/OlegVishnivetsky/awesome-attributes/assets/98222611/e43cd314-ed3a-4923-9599-eba00bb6eab2">
 
 ## 4. Label
 
 Changes the field name in the inspector, useful for long names. 
 
-![Untitled](Awesome%20Attributes%20(Unity%20asset%20tool)%205e73a66631b54705a3dc7c82eb841e96/Untitled%206.png)
-
-![Untitled](Awesome%20Attributes%20(Unity%20asset%20tool)%205e73a66631b54705a3dc7c82eb841e96/Untitled%207.png)
+```csharp
+    [Label("Short Name")]
+    [SerializeField] private float veryveryveryveryveryLong;
+```
+<img src="https://github.com/OlegVishnivetsky/awesome-attributes/assets/98222611/02c5de50-a68c-4c86-9136-f5e67175b7c9">
 
 ## 5. ShowIf
 
 Shows the field in the inspector if the condition is true, otherwise hides it. May contain several conditions and enum.
 
-![Untitled](Awesome%20Attributes%20(Unity%20asset%20tool)%205e73a66631b54705a3dc7c82eb841e96/Untitled%208.png)
+```csharp
+    [SerializeField] private bool showIfThisTrue;
+    [ShowIf("showIfThisTrue")]
+    [SerializeField] private int showMePlease;
 
-![2024-06-1212-11-59-ezgif.com-video-to-gif-converter.gif](Awesome%20Attributes%20(Unity%20asset%20tool)%205e73a66631b54705a3dc7c82eb841e96/2024-06-1212-11-59-ezgif.com-video-to-gif-converter.gif)
+    [SerializeField] private ShowIfTestEnum showIfEnumTest;
+    [ShowIf(ShowIfTestEnum.Show, "showIfEnumTest")]
+    [SerializeField] private int showEnumTest;
+```
+<img src="https://github.com/OlegVishnivetsky/awesome-attributes/assets/98222611/0f8b3b7d-13b1-40ef-99a1-7d5cc8294efb">
 
 // TODO: Write documentation for the remaining attributes.
 
