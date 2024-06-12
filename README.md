@@ -35,6 +35,11 @@ Draws a title and subtitle (optional). You can change the **text alignment** to 
     [Title("Health", "Player health")]
     [SerializeField] private float maxHealth;
     [SerializeField] private float currentHealth;
+
+    --------------------------------------------------
+
+    public TitleAttribute(string title, string subTitle = null, bool bold = true, bool withSeparationLine = true);
+    public TitleAttribute(string title, TitleTextAlignments textAlignments, string subTitle = null,  bool bold = true, bool withSeparationLine = true)
 ```
 <img src="https://github.com/OlegVishnivetsky/awesome-attributes/assets/98222611/db28898a-d926-44f5-9b2a-d21042547a81">
 <img src="https://github.com/OlegVishnivetsky/awesome-attributes/assets/98222611/789cd02f-a969-4908-bebc-b620763d9976">
@@ -48,6 +53,11 @@ Everything is simple here. The attribute changes gui color. You can use it by sp
     [SerializeField] private float maxHealth;
     [GUIColor(255, 0, 0, 0.2f)]
     [SerializeField] private float currentHealth;
+
+    --------------------------------------------------
+
+    public GUIColorAttribute(int r, int g, int b, float a);
+    public GUIColorAttribute(string colorHex)
 ```
 <img src="https://github.com/OlegVishnivetsky/awesome-attributes/assets/98222611/aa6172c5-5c04-4916-bd93-6a2916378d7d">
 
@@ -65,6 +75,10 @@ Draws a separation line with **height, top spacing** and **bottom spacing.**
 
     [SerializeField] private float speed;
     [SerializeField] public float maxSpeed = 4;
+
+    --------------------------------------------------
+
+    public SeparationLineAttribute(float height, float topSpacing = 1, float bottomSpacing = 1);
 ```
 <img src="https://github.com/OlegVishnivetsky/awesome-attributes/assets/98222611/e43cd314-ed3a-4923-9599-eba00bb6eab2">
 
@@ -75,12 +89,16 @@ Changes the field name in the inspector, useful for long names.
 ```csharp
     [Label("Short Name")]
     [SerializeField] private float veryveryveryveryveryLong;
+
+    --------------------------------------------------
+
+    public LabelAttribute(string lable)
 ```
 <img src="https://github.com/OlegVishnivetsky/awesome-attributes/assets/98222611/02c5de50-a68c-4c86-9136-f5e67175b7c9">
 
 ## 5. ShowIf
 
-Shows the field in the inspector if the condition is true, otherwise hides it. May contain several conditions and enum.
+Shows the field in the inspector if the condition is true, otherwise hides it. May contain several conditions and enum. You can also specify a method that returns a bool.
 
 ```csharp
     [SerializeField] private bool showIfThisTrue;
@@ -90,6 +108,13 @@ Shows the field in the inspector if the condition is true, otherwise hides it. M
     [SerializeField] private ShowIfTestEnum showIfEnumTest;
     [ShowIf(ShowIfTestEnum.Show, "showIfEnumTest")]
     [SerializeField] private int showEnumTest;
+
+    --------------------------------------------------
+
+    public ShowIfAttribute(string condition)
+    public ShowIfAttribute(string conditionsOperator, params string[] conditions)
+    public ShowIfAttribute(object enumValue, string enumFieldName)
+
 ```
 <img src="https://github.com/OlegVishnivetsky/awesome-attributes/assets/98222611/0f8b3b7d-13b1-40ef-99a1-7d5cc8294efb">
 
