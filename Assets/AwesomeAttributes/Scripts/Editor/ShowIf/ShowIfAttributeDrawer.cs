@@ -1,6 +1,9 @@
 using UnityEditor;
 using UnityEngine;
 
+/// <summary>
+/// Property drawer for ShowIf attribute
+/// </summary>
 [CustomPropertyDrawer(typeof(ShowIfAttribute))]
 public class ShowIfAttributeDrawer : ConditionalAttributeDrawerBase
 {

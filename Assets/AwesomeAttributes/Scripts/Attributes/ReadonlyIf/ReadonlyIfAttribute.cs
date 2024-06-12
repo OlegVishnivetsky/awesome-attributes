@@ -1,3 +1,6 @@
+/// <summary>
+/// Attribute that makes the field read-only if the condition is true
+/// </summary>
 public class ReadonlyIfAttribute : ConditionalAttributeBase
 {
     public ReadonlyIfAttribute(string condition)

@@ -2,6 +2,9 @@ using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
+/// <summary>
+/// Property drawer for ShowProperty attribute
+/// </summary>
 [CustomPropertyDrawer(typeof(ShowPropertyAttribute))]
 public class ShowPropertyAttributeDrawer : PropertyDrawer
 {

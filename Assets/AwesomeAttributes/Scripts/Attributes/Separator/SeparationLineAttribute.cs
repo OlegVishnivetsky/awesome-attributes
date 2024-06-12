@@ -13,11 +13,6 @@ public class SeparationLineAttribute : PropertyAttribute
     public readonly float Height;
     public readonly Color LineColor;
 
-    /// <summary>
-    /// Constructor with height and optional spacing parameters
-    /// </summary>
-    /// <param name="height"></param>
-    /// <param name="spacing"></param>
     public SeparationLineAttribute(float height, float topSpacing = 1,
         float bottomSpacing = 1)
     {

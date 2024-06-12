@@ -1,3 +1,6 @@
+/// <summary>
+/// Shows the field in the inspector if the condition is true, otherwise hides it
+/// </summary>
 public class ShowIfAttribute : ConditionalAttributeBase
 {
     public ShowIfAttribute(string condition) 

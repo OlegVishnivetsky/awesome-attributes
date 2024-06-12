@@ -351,7 +351,7 @@ MonoBehaviour:
   showIfEnumTest: 1
   showMePlease: 229
   readonlyHide: 24
-  onlyChildObjects: {fileID: 1912139630}
+  onlyChildObjects: {fileID: 1435275074}
   requiredObject: {fileID: 0}
   minMaxValue: {x: 4.918126, y: 12.767281}
 --- !u!4 &797182029

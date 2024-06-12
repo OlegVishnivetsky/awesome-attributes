@@ -1,6 +1,9 @@
 using UnityEditor;
 using UnityEngine;
 
+/// <summary>
+/// Custom property drawer for MinMaxSliderAttribute
+/// </summary>
 [CustomPropertyDrawer(typeof(MinMaxSliderAttribute))]
 public class MinMaxSliderAttributeDrawer : PropertyDrawer
 {
@@ -29,6 +32,12 @@ public class MinMaxSliderAttributeDrawer : PropertyDrawer
         }
     }
 
+    /// <summary>
+    /// Draws min/max slider for Vector2 struct
+    /// </summary>
+    /// <param name="property"></param>
+    /// <param name="minMaxSliderAttribute"></param>
+    /// <param name="splittedRect"></param>
     private void DrawVector2MinMaxSlider(SerializedProperty property, 
         MinMaxSliderAttribute minMaxSliderAttribute, Rect[] splittedRect)
     {
@@ -53,6 +62,12 @@ public class MinMaxSliderAttributeDrawer : PropertyDrawer
             property.vector2Value = vector;
     }
 
+    /// <summary>
+    /// Draws min/max slider for Vector2Int struct
+    /// </summary>
+    /// <param name="property"></param>
+    /// <param name="minMaxSliderAttribute"></param>
+    /// <param name="splittedRect"></param>
     private void DrawVector2IntMinMaxSlider(SerializedProperty property, 
         MinMaxSliderAttribute minMaxSliderAttribute, Rect[] splittedRect)
     {
@@ -77,6 +92,12 @@ public class MinMaxSliderAttributeDrawer : PropertyDrawer
             property.vector2IntValue = vector;
     }
 
+    /// <summary>
+    /// Splits a rectangle into a certain number of parts 
+    /// </summary>
+    /// <param name="rectToSplit"></param>
+    /// <param name="amount"></param>
+    /// <returns></returns>
     private Rect[] SplitRect(Rect rectToSplit, int amount)
     {
         Rect[] rects = new Rect[amount];

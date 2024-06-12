@@ -1,6 +1,9 @@
 using UnityEditor;
 using UnityEngine;
 
+/// <summary>
+/// Property drawer for WithoutLabel attribute
+/// </summary>
 [CustomPropertyDrawer(typeof(WithoutLabelAttribute))]
 public class WithoutLabelAttributeDrawer : PropertyDrawer
 {

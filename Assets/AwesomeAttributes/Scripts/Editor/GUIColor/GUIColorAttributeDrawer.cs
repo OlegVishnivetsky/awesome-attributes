@@ -1,6 +1,9 @@
 using UnityEditor;
 using UnityEngine;
 
+/// <summary>
+/// Property drawer for gui color attribute
+/// </summary>
 [CustomPropertyDrawer(typeof(GUIColorAttribute))]
 public class GUIColorAttributeDrawer : PropertyDrawer
 {

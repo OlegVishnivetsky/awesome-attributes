@@ -2,6 +2,9 @@ using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
+/// <summary>
+/// Custom property drawer for button attribute
+/// </summary>
 [CustomPropertyDrawer(typeof(ButtonAttribute))]
 public class ButtonAttributeDrawer : PropertyDrawer
 {

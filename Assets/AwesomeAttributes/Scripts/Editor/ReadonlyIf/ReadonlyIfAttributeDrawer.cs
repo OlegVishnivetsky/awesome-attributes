@@ -1,6 +1,9 @@
 using UnityEditor;
 using UnityEngine;
 
+/// <summary>
+/// Property drawer for ReadonlyIf attribute
+/// </summary>
 [CustomPropertyDrawer(typeof(ReadonlyIfAttribute))]
 public class ReadonlyIfAttributeDrawer : ConditionalAttributeDrawerBase
 {

@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Creates special slider the user can use to specify a range between a min and a max
+/// </summary>
 public class MinMaxSliderAttribute : PropertyAttribute
 {
     public readonly float MinValue;

@@ -1,6 +1,9 @@
 using UnityEditor;
 using UnityEngine;
 
+/// <summary>
+/// Property drawer for Readonly attribute
+/// </summary>
 [CustomPropertyDrawer(typeof(ReadonlyAttribute))]
 public class ReadonlyAttributeDrawer : PropertyDrawer
 {

@@ -3,14 +3,32 @@ using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
-public class AttributesHelper
+/// <summary>
+/// Class that contains useful methods for attribute drawers
+/// </summary>
+public static class AttributesHelper
 {
+    /// <summary>
+    /// Splits a camel case string into separate words
+    /// </summary>
+    /// <param name="input"></param>
+    /// <returns>The splited string</returns>
     public static string SplitCamelCase(string input)
     {
         return System.Text.RegularExpressions.Regex.Replace(input, "([A-Z])", " $1", 
             System.Text.RegularExpressions.RegexOptions.Compiled).Trim();
     }
 
+    /// <summary>
+    /// Draws a property field based on the property type
+    /// </summary>
+    /// <param name="position"></param>
+    /// <param name="propertyType"></param>
+    /// <param name="type"></param>
+    /// <param name="value"></param>
+    /// <param name="label"></param>
+    /// <returns>The drawn property value</returns>
+    /// <exception cref="NotImplementedException"></exception>
     public static object DrawPropertyByType(Rect position, SerializedPropertyType propertyType,
         Type type, object value, GUIContent label)
     {
@@ -53,6 +71,13 @@ public class AttributesHelper
         }
     }
 
+    /// <summary>
+    /// Returns the field info with the given field name, serialized property and target object
+    /// </summary>
+    /// <param name="fieldName"></param>
+    /// <param name="property"></param>
+    /// <param name="targetObject"></param>
+    /// <returns></returns>
     public static FieldInfo GetFieldInfo(string fieldName, SerializedProperty property, 
         out UnityEngine.Object targetObject)
     {
@@ -66,6 +91,12 @@ public class AttributesHelper
         return fieldInfoToReturn;
     }
 
+    /// <summary>
+    /// Returns the field info with the given field name and target object
+    /// </summary>
+    /// <param name="fieldName"></param>
+    /// <param name="targetObject"></param>
+    /// <returns></returns>
     public static FieldInfo GetFieldInfo(string fieldName, UnityEngine.Object targetObject)
     {
         FieldInfo fieldInfoToReturn = targetObject.GetType()
@@ -79,6 +110,12 @@ public class AttributesHelper
         return fieldInfoToReturn;
     }
 
+    /// <summary>
+    /// Returns the property info with the given property name and target object
+    /// </summary>
+    /// <param name="propertyName"></param>
+    /// <param name="targetObject"></param>
+    /// <returns></returns>
     public static PropertyInfo GetPropertyInfo(string propertyName, UnityEngine.Object targetObject)
     {
         PropertyInfo propertyInfoToReturn = targetObject.GetType()
@@ -92,6 +129,12 @@ public class AttributesHelper
         return propertyInfoToReturn;
     }
 
+    /// <summary>
+    /// Returns the method info with the given method name and target object
+    /// </summary>
+    /// <param name="methodName"></param>
+    /// <param name="targetObject"></param>
+    /// <returns></returns>
     public static MethodInfo GetMethodInfo(string methodName, UnityEngine.Object targetObject)
     {
         MethodInfo methodInfoToReturn = targetObject.GetType()
@@ -105,6 +148,11 @@ public class AttributesHelper
         return methodInfoToReturn;
     }
 
+    /// <summary>
+    /// Retrieves the target object from a serialized property
+    /// </summary>
+    /// <param name="property"></param>
+    /// <returns></returns>
     public static UnityEngine.Object GetTargetObject(SerializedProperty property)
     {
         UnityEngine.Object targetObjectToReturn = property.serializedObject.targetObject;
@@ -112,6 +160,13 @@ public class AttributesHelper
         return targetObjectToReturn;
     }
 
+    /// <summary>
+    /// Invokes a method and returns its value
+    /// </summary>
+    /// <param name="methodInfo"></param>
+    /// <param name="targetObject"></param>
+    /// <param name="parameters"></param>
+    /// <returns></returns>
     public static object GetMethodReturnValue(MethodInfo methodInfo, UnityEngine.Object targetObject, 
         object[] parameters = null)
     {

@@ -1,6 +1,9 @@
 using UnityEditor;
 using UnityEngine;
 
+/// <summary>
+/// Custom property drawer for lable attribute
+/// </summary>
 [CustomPropertyDrawer(typeof(LabelAttribute))]
 public class LabelAttributeDrawer : PropertyDrawer
 {

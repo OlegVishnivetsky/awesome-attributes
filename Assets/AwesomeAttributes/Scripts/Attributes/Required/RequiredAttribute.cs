@@ -1,6 +1,9 @@
 using UnityEditor;
 using UnityEngine;
 
+/// <summary>
+/// Attribute that creates a warning box if the field is null  
+/// </summary>
 public class RequiredAttribute : PropertyAttribute
 {
     public readonly string Message;

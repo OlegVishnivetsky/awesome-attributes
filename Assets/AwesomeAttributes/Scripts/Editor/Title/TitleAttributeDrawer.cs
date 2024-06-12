@@ -39,7 +39,8 @@ public class TitleAttributeDrawer : DecoratorDrawer
 
     /// <summary>
     /// Overridden method, that determines what height the title field will have.
-    /// If you want to change the title font size, you will most likely have to change these two height constants
+    /// If you want to change the title font size, you will most likely have 
+    /// to change these two height constants
     /// </summary>
     /// <returns></returns>
     public override float GetHeight()
