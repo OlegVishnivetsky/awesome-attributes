@@ -1,6 +1,6 @@
 <h1 align="center"><img align="center" src="https://github.com/OlegVishnivetsky/awesome-attributes/assets/98222611/cf36e245-6acd-4da5-8070-e85b1a16f74b" width="100" height="100"> AWESOME ATTRIBUTES</h1>
 
-**Last Updated:** 04/29/2024 
+**Last Updated:** 06/12/2024 
 
 **Publisher: cherrydev** 
 
