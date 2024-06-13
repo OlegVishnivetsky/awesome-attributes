@@ -118,7 +118,102 @@ Shows the field in the inspector if the condition is true, otherwise hides it. M
 ```
 <img src="https://github.com/OlegVishnivetsky/awesome-attributes/assets/98222611/1fbc4e26-6593-4830-86a9-2ad01cbb2e58">
 
-// TODO: Write documentation for the remaining attributes.
+## 6.  Readonly
+
+Attribute class for **readonly** fields, they are visible in the inspector but cannot be edited
+
+```csharp
+    [SerializeField] private float maxHealth;
+    [Readonly]
+    [SerializeField] private float currentHealth;
+```
+
+<img src="https://github.com/OlegVishnivetsky/awesome-attributes/assets/98222611/f3147839-124e-4259-958a-056b40621cae">
+
+## 7.  ReadonlyIf
+
+Another **conditional** attribute. Makes the field **readonly** if the condition is true. May contain several conditions and **enum**.
+
+```csharp
+    [SerializeField] private bool turnOnReadonly;
+    [ReadonlyIf("turnOnReadonly")]
+    [SerializeField] private float currentHealth;
+
+    --------------------------------------------------
+
+    public ReadonlyIfAttribute(string condition)
+    public ReadonlyIfAttribute(string conditionsOperator, params string[] conditions)
+    public ReadonlyIfAttribute(object enumValue, string enumFieldName)
+```
+
+<img src="https://github.com/OlegVishnivetsky/awesome-attributes/assets/98222611/d64e2ecf-4738-42e6-b12b-6bd16f41f767">
+
+## 8.  MinMaxSlider
+
+Attribute that creates special **slider** the user can use to specify a range between a **min** and a **max**. Can be used on Vector2 and float fields
+
+```csharp
+    [MinMaxSlider(0, 20)]
+    [SerializeField] private Vector2 minMaxValue;
+
+    --------------------------------------------------
+
+    public MinMaxSliderAttribute(float minValue, float maxValue)
+```
+
+<img src="https://github.com/OlegVishnivetsky/awesome-attributes/assets/98222611/44c70627-1b27-4307-9569-1a723aa12863">
+
+## 9.  WithoutLabel
+
+Hides the field label
+
+```
+    [WithoutLabel]
+    [SerializeField] private Vector2 iDontNeedLabel;
+```
+
+<img src="https://github.com/OlegVishnivetsky/awesome-attributes/assets/98222611/6dfd0086-fa4e-4d8c-8181-3036ab649882">
+
+## 10.  Button
+
+Shows a **button** under the field to which you placed the attribute. The name of the method is specified as a parameter; you can also specify the **label** and **height**.
+
+```
+    [Button("DebugCurrentHealth", "Check Health")]
+    [SerializeField] private float currentHealth;
+
+    --------------------------------------------------
+
+    public ButtonAttribute(string methodName, string lable = null, float height = 18)
+```
+
+<img src="https://github.com/OlegVishnivetsky/awesome-attributes/assets/98222611/0930c652-c00f-47fa-86dc-eb4951c76a6a">
+
+## 11.  Required
+
+Attribute that creates a warning box if the field is null
+
+```
+    [Button("DebugCurrentHealth", "Check Health")]
+    [SerializeField] private float currentHealth;
+
+    --------------------------------------------------
+
+    public ButtonAttribute(string methodName, string lable = null, float height = 18)
+```
+
+<img src="https://github.com/OlegVishnivetsky/awesome-attributes/assets/98222611/dc93abbe-d846-4041-bbb8-cf3488747511">
+
+## 12.  OnlyChildGameObjects
+
+Restricts a property to reference only child objects of the same type. Adds a button "Pick" that opens a window with all child objects of the same type as the field and allows you to assign only child objects
+
+```
+    [OnlyChildGameObjects]
+    [SerializeField] private Rigidbody2D onlyChildObjects;
+```
+
+<img src="https://github.com/OlegVishnivetsky/awesome-attributes/assets/98222611/4eedc2a1-3383-40c3-88ac-a9fd1c1e9b04">
 
 ---
 
