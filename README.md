@@ -120,7 +120,7 @@ Shows the field in the inspector if the condition is true, otherwise hides it. M
 
 ## 6.  Readonly
 
-Attribute class for **readonly** fields, they are visible in the inspector but cannot be edited
+Attribute class for **readonly** fields, they are visible in the inspector but cannot be edited.
 
 ```csharp
     [SerializeField] private float maxHealth;
@@ -150,7 +150,7 @@ Another **conditional** attribute. Makes the field **readonly** if the condition
 
 ## 8.  MinMaxSlider
 
-Attribute that creates special **slider** the user can use to specify a range between a **min** and a **max**. Can be used on Vector2 and float fields
+Attribute that creates special **slider** the user can use to specify a range between a **min** and a **max**. Can be used on Vector2 and float fields.
 
 ```csharp
     [MinMaxSlider(0, 20)]
@@ -191,7 +191,7 @@ Shows a **button** under the field to which you placed the attribute. The name o
 
 ## 11.  Required
 
-Attribute that creates a warning box if the field is null
+Attribute that creates a warning box if the field is null.
 
 ```
     [Button("DebugCurrentHealth", "Check Health")]
@@ -206,7 +206,7 @@ Attribute that creates a warning box if the field is null
 
 ## 12.  OnlyChildGameObjects
 
-Restricts a property to reference only child objects of the same type. Adds a button "Pick" that opens a window with all child objects of the same type as the field and allows you to assign only child objects
+Restricts a property to reference only child objects of the same type. Adds a button "Pick" that opens a window with all child objects of the same type as the field and allows you to assign only child objects.
 
 ```
     [OnlyChildGameObjects]
@@ -214,6 +214,28 @@ Restricts a property to reference only child objects of the same type. Adds a bu
 ```
 
 <img src="https://github.com/OlegVishnivetsky/awesome-attributes/assets/98222611/4eedc2a1-3383-40c3-88ac-a9fd1c1e9b04">
+
+## 13.  TagSelector
+
+Allows you to select a tag from a dropdown in the Inspector.
+
+```
+    [TagSelector]
+    [SerializeField] private string playerTag;
+```
+
+<img src="https://github.com/OlegVishnivetsky/awesome-attributes/assets/98222611/bf27bef6-8887-4464-96d9-28f8eebf9771">
+
+## 14.  Scene
+
+Allows you to select a scene from the drop-down list in the Inspector for string or integer fields. The drop-down list shows the scenes that are in Build Settings/Scenes In Build
+
+```
+    [Scene]
+    [SerializeField] private string sceneField;
+```
+
+<img src="https://github.com/OlegVishnivetsky/awesome-attributes/assets/98222611/3ee7ef70-7067-4299-b18d-11b9687e01bf">
 
 ---
 
