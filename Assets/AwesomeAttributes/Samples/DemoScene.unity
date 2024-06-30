@@ -337,9 +337,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 114064efd37d198438d28bcd969cab51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 27.72
-  currentHealth: 4.49
-  speed: -3.7
+  tagSelector: Finish
+  sceneField: DemoScene
+  maxHealth: 0
+  currentHealth: 0
+  speed: 0
   maxSpeed: 4
   myProperty: 385
   childTransform: {fileID: 0}

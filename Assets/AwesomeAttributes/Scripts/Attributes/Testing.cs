@@ -1,11 +1,17 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Testing : MonoBehaviour
 {
+    [TagSelector]
+    [SerializeField] private string tagSelector;
+
+    [Scene]
+    [SerializeField] private string sceneField;
+
     [Title("Health", "Player health")]
     [GUIColor("#faab09")]
     [SerializeField] private float maxHealth;
+
     [Button("ButtonPressedDebug", "Show Current Helth")]
     [SerializeField] private float currentHealth;
 
@@ -43,7 +49,7 @@ public class Testing : MonoBehaviour
         Debug.Log(onlyChildObjects.name);
     }
 
-    public int MyProperty 
+    public int MyProperty
     {
         get { return myProperty; }
         set
