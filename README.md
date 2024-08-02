@@ -1,6 +1,6 @@
 <h1 align="center"><img align="center" src="https://github.com/OlegVishnivetsky/awesome-attributes/assets/98222611/cf36e245-6acd-4da5-8070-e85b1a16f74b" width="100" height="100"> AWESOME ATTRIBUTES</h1>
 
-**Last Updated:** 06/12/2024 
+**Last Updated:** 08/02/2024 
 
 **Publisher: cherrydev** 
 
@@ -236,6 +236,16 @@ Allows you to select a scene from the drop-down list in the Inspector for string
 ```
 
 <img src="https://github.com/OlegVishnivetsky/awesome-attributes/assets/98222611/3ee7ef70-7067-4299-b18d-11b9687e01bf">
+
+## 15.  PlayerPrefs
+
+All fields marked with this attribute will be automatically saved and loaded in the OnDestroy or OnDisable methods. For this attribute to work, you need to add PlayerPrefsAttributeObserver prefab to the scene. 
+As a parameter, the attribute requires a key and the type when it will be saved (optional, by default everything is saved in OnDisable()).
+
+```
+    [PlayerPrefs("SaveMe")]
+    [SerializeField] private int saveMe;
+```
 
 ---
 
