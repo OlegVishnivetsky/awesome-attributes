@@ -194,12 +194,15 @@ Shows a **button** under the field to which you placed the attribute. The name o
 Attribute that creates a warning box if the field is null.
 
 ```
-    [Button("DebugCurrentHealth", "Check Health")]
-    [SerializeField] private float currentHealth;
+    [Required]
+    [SerializeField] private GameObject requiredObject;
 
     --------------------------------------------------
 
-    public ButtonAttribute(string methodName, string lable = null, float height = 18)
+    public RequiredAttribute()
+    public RequiredAttribute(string message)
+    public RequiredAttribute(MessageType messageType)
+    public RequiredAttribute(string message, MessageType messageType)
 ```
 
 <img src="https://github.com/OlegVishnivetsky/awesome-attributes/assets/98222611/dc93abbe-d846-4041-bbb8-cf3488747511">
@@ -239,7 +242,7 @@ Allows you to select a scene from the drop-down list in the Inspector for string
 
 ## 15.  PlayerPrefs
 
-All fields marked with this attribute will be automatically saved and loaded in the OnDestroy or OnDisable methods. For this attribute to work, you need to add PlayerPrefsAttributeObserver prefab to the scene. 
+All fields marked with this attribute will be automatically saved in the OnDestroy or OnDisable methods. For this attribute to work, you need to add PlayerPrefsAttributeObserver prefab to the scene. 
 As a parameter, the attribute requires a key and the type when it will be saved (optional, by default everything is saved in OnDisable()).
 
 ```
