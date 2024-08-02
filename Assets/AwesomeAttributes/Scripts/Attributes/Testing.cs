@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Testing : MonoBehaviour
 {
+    [PlayerPrefs("SaveMe")]
+    [SerializeField] private int saveMe;
+    
     [TagSelector]
     [SerializeField] private string tagSelector;
 
@@ -31,7 +34,7 @@ public class Testing : MonoBehaviour
     [SerializeField] private bool enableReadonly;
     [SerializeField] private ShowIfTestEnum showIfEnumTest;
 
-    [ShowIf("showHidenValue")]
+    [ShowIf("showHiddenValue")]
     [SerializeField] private int showMePlease = 1;
 
     [ReadonlyIf("enableReadonly")]
@@ -46,16 +49,8 @@ public class Testing : MonoBehaviour
 
     private void Start()
     {
+        saveMe = PlayerPrefs.GetInt("SaveMe");
         Debug.Log(onlyChildObjects.name);
-    }
-
-    public int MyProperty
-    {
-        get { return myProperty; }
-        set
-        {
-            myProperty = value;
-        }
     }
 
     public void ButtonPressedDebug()
@@ -66,6 +61,11 @@ public class Testing : MonoBehaviour
     public bool CheckCondition()
     {
         return true;
+    }
+
+    public void IncreaseSaveMeValue()
+    {
+        saveMe++;
     }
 }
 
