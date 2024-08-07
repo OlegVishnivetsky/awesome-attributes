@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Testing : MonoBehaviour
 {
+    [SerializeField, ResourcesPath] private string spritePath;
+    
     [PlayerPrefs("SaveMe")]
     [SerializeField] private int saveMe;
     
