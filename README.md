@@ -8,6 +8,9 @@
 💡 About: Unity asset designed to speed up and improve your development process. 
   Adds a large number of attributes with which you can make your inspector more beautiful and convenient.
 </aside>
+</br>
+</br>
+Overview Video: https://www.youtube.com/watch?v=FhUs-C4zX_s&t=14s&ab_channel=cherrydev(url)
 
 # 📥 Installation
 
