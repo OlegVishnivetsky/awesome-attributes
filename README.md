@@ -170,7 +170,7 @@ Attribute that creates special **slider** the user can use to specify a range be
 
 Hides the field label
 
-```
+```csharp
     [WithoutLabel]
     [SerializeField] private Vector2 iDontNeedLabel;
 ```
@@ -181,7 +181,7 @@ Hides the field label
 
 Shows a **button** under the field to which you placed the attribute. The name of the method is specified as a parameter; you can also specify the **label** and **height**.
 
-```
+```csharp
     [Button("DebugCurrentHealth", "Check Health")]
     [SerializeField] private float currentHealth;
 
@@ -196,7 +196,7 @@ Shows a **button** under the field to which you placed the attribute. The name o
 
 Attribute that creates a warning box if the field is null.
 
-```
+```csharp
     [Required]
     [SerializeField] private GameObject requiredObject;
 
@@ -214,7 +214,7 @@ Attribute that creates a warning box if the field is null.
 
 Restricts a property to reference only child objects of the same type. Adds a button "Pick" that opens a window with all child objects of the same type as the field and allows you to assign only child objects.
 
-```
+```csharp
     [OnlyChildGameObjects]
     [SerializeField] private Rigidbody2D onlyChildObjects;
 ```
@@ -225,7 +225,7 @@ Restricts a property to reference only child objects of the same type. Adds a bu
 
 Allows you to select a tag from a dropdown in the Inspector.
 
-```
+```csharp
     [TagSelector]
     [SerializeField] private string playerTag;
 ```
@@ -236,7 +236,7 @@ Allows you to select a tag from a dropdown in the Inspector.
 
 Allows you to select a scene from the drop-down list in the Inspector for string or integer fields. The drop-down list shows the scenes that are in Build Settings/Scenes In Build
 
-```
+```csharp
     [Scene]
     [SerializeField] private string sceneField;
 ```
@@ -248,12 +248,28 @@ Allows you to select a scene from the drop-down list in the Inspector for string
 All fields marked with this attribute will be automatically saved in the OnDestroy or OnDisable methods. For this attribute to work, you need to add PlayerPrefsAttributeObserver prefab to the scene. 
 As a parameter, the attribute requires a key and the type when it will be saved (optional, by default everything is saved in OnDisable()).
 
-```
+```csharp
     [PlayerPrefs("SaveMe")]
     [SerializeField] private int saveMe;
 ```
 
----
+## 16.  ResourcesPath
+
+Allows selecting assets from the Resources folder and stores the path for Resources.Load. Also restricts selection to assets within the Resources folder.
+
+```csharp
+    [ResourcesPath]
+    [SerializeField] private string path;
+```
+
+## 17.  Gradient
+
+Gradient attribute that allows you editing Gradient fields directly in the Inspector.
+
+```csharp
+    [Gradient]
+    [SerializeField] private Gradient gradient;
+```
 
 ⭐⭐⭐⭐⭐ If you want to add your attribute. Then please follow the folder structure as in the asset and make a pull request. Feel free to edit any code to suit your needs. If you find any bugs or have any questions, you can write about it to me by email, github or in reviews in the Unity Asset Store. I will also be pleased if you visit my itchio page.  😄
 
