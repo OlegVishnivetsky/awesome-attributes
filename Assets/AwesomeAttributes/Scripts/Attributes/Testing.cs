@@ -1,8 +1,12 @@
 using UnityEngine;
 
 public class Testing : MonoBehaviour
-{
-    [SerializeField, ResourcesPath] private string spritePath;
+{ 
+    [Gradient] 
+    [SerializeField] private Gradient _gradient;
+    
+    [ResourcesPath]
+    [SerializeField] private string spritePath;
     
     [PlayerPrefs("SaveMe")]
     [SerializeField] private int saveMe;
