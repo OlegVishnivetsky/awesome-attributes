@@ -1,29 +1,32 @@
 using UnityEditor;
 using UnityEngine;
 
-/// <summary>
-/// Property drawer for ShowIf attribute
-/// </summary>
-[CustomPropertyDrawer(typeof(ShowIfAttribute))]
-public class ShowIfAttributeDrawer : ConditionalAttributeDrawerBase
+namespace AwesomeAttributes
 {
-    protected override void DrawProperty(Rect position, SerializedProperty property, GUIContent label)
+    /// <summary>
+    /// Property drawer for ShowIf attribute
+    /// </summary>
+    [CustomPropertyDrawer(typeof(ShowIfAttribute))]
+    public class ShowIfAttributeDrawer : ConditionalAttributeDrawerBase
     {
-        if (isPropertyShown)
+        protected override void DrawProperty(Rect position, SerializedProperty property, GUIContent label)
         {
-            EditorGUI.PropertyField(position, property, label);
+            if (isPropertyShown)
+            {
+                EditorGUI.PropertyField(position, property, label);
+            }
         }
-    }
 
-    public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
-    {
-        if (isPropertyShown)
+        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            return base.GetPropertyHeight(property, label);
-        }
-        else
-        {
-            return 0f;
+            if (isPropertyShown)
+            {
+                return base.GetPropertyHeight(property, label);
+            }
+            else
+            {
+                return 0f;
+            }
         }
     }
 }

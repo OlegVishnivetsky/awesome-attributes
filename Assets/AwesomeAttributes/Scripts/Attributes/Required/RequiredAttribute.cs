@@ -1,33 +1,36 @@
-using UnityEditor;
+
 using UnityEngine;
 
-/// <summary>
-/// Attribute that creates a warning box if the field is null  
-/// </summary>
-public class RequiredAttribute : PropertyAttribute
+namespace AwesomeAttributes
 {
-    public readonly string Message;
-    public readonly MessageType MessageType;
-
-    public RequiredAttribute() 
+    /// <summary>
+    /// Attribute that creates a warning box if the field is null  
+    /// </summary>
+    public class RequiredAttribute : PropertyAttribute
     {
-        MessageType = MessageType.Error;
-    }
+        public readonly string Message;
+        public readonly RequiredMessageType MessageType;
 
-    public RequiredAttribute(string message) 
-    {
-        Message = message;
-        MessageType = MessageType.Error;
-    }
+        public RequiredAttribute()
+        {
+            MessageType = RequiredMessageType.Error;
+        }
 
-    public RequiredAttribute(MessageType messageType)
-    {
-        MessageType = messageType;
-    }
+        public RequiredAttribute(string message)
+        {
+            Message = message;
+            MessageType = RequiredMessageType.Error;
+        }
 
-    public RequiredAttribute(string message, MessageType messageType)
-    {
-        Message = message;
-        MessageType = messageType;
+        public RequiredAttribute(RequiredMessageType messageType)
+        {
+            MessageType = messageType;
+        }
+
+        public RequiredAttribute(string message, RequiredMessageType messageType)
+        {
+            Message = message;
+            MessageType = messageType;
+        }
     }
 }

@@ -1,28 +1,31 @@
 using System;
 using UnityEngine;
 
-/// <summary>
-/// Shows a button under the field to which you placed the attribute
-/// </summary>
-[AttributeUsage(AttributeTargets.All, AllowMultiple = false, Inherited = true)]
-public class ButtonAttribute : PropertyAttribute
+namespace AwesomeAttributes
 {
-    public readonly string MethodName;
-    public readonly string Lable;
-    public readonly float Height;
-
-    public ButtonAttribute(string methodName, string lable = null, float height = 18) 
+    /// <summary>
+    /// Shows a button under the field to which you placed the attribute
+    /// </summary>
+    [AttributeUsage(AttributeTargets.All, AllowMultiple = false, Inherited = true)]
+    public class ButtonAttribute : PropertyAttribute
     {
-        if (lable  == null)
-        {
-            Lable = AttributesHelper.SplitCamelCase(methodName);
-        }
-        else
-        {
-            Lable = lable;
-        }
+        public readonly string MethodName;
+        public readonly string Lable;
+        public readonly float Height;
 
-        Height = height;
-        MethodName = methodName;
+        public ButtonAttribute(string methodName, string lable = null, float height = 18)
+        {
+            if (lable == null)
+            {
+                Lable = AttributesHelper.SplitCamelCase(methodName);
+            }
+            else
+            {
+                Lable = lable;
+            }
+
+            Height = height;
+            MethodName = methodName;
+        }
     }
 }

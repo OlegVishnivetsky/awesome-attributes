@@ -1,4 +1,5 @@
 using UnityEngine;
+using AwesomeAttributes;
 
 public class Testing : MonoBehaviour
 { 

@@ -1,17 +1,20 @@
 using UnityEditor;
 using UnityEngine;
 
-/// <summary>
-/// Property drawer for gui color attribute
-/// </summary>
-[CustomPropertyDrawer(typeof(GUIColorAttribute))]
-public class GUIColorAttributeDrawer : PropertyDrawer
+namespace AwesomeAttributes
 {
-    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+    /// <summary>
+    /// Property drawer for gui color attribute
+    /// </summary>
+    [CustomPropertyDrawer(typeof(GUIColorAttribute))]
+    public class GUIColorAttributeDrawer : PropertyDrawer
     {
-        GUIColorAttribute guiColorAttribute = attribute as GUIColorAttribute;
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+        {
+            GUIColorAttribute guiColorAttribute = attribute as GUIColorAttribute;
 
-        GUI.color = guiColorAttribute.Color;
-        EditorGUI.PropertyField(position, property, label);
+            GUI.color = guiColorAttribute.Color;
+            EditorGUI.PropertyField(position, property, label);
+        }
     }
 }

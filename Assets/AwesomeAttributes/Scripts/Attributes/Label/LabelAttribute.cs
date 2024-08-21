@@ -1,16 +1,19 @@
 using System;
 using UnityEngine;
 
-/// <summary>
-/// Changes the field name in the inspector, useful for long names
-/// </summary>
-[AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
-public class LabelAttribute : PropertyAttribute
+namespace AwesomeAttributes
 {
-    public readonly string Lable;
-
-    public LabelAttribute(string lable)
+    /// <summary>
+    /// Changes the field name in the inspector, useful for long names
+    /// </summary>
+    [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
+    public class LabelAttribute : PropertyAttribute
     {
-        Lable = lable;
+        public readonly string Lable;
+
+        public LabelAttribute(string lable)
+        {
+            Lable = lable;
+        }
     }
 }

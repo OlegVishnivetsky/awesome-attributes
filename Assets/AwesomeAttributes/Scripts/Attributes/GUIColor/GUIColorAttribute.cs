@@ -1,27 +1,30 @@
 using UnityEngine;
 
-/// <summary>
-/// Changes GUI color
-/// </summary>
-public class GUIColorAttribute : PropertyAttribute
+namespace AwesomeAttributes
 {
-    public readonly Color Color;
-
-    public GUIColorAttribute(int r, int g, int b)
+    /// <summary>
+    /// Changes GUI color
+    /// </summary>
+    public class GUIColorAttribute : PropertyAttribute
     {
-        Color = new Color(r, g, b, 1f);
-    }
+        public readonly Color Color;
 
-    public GUIColorAttribute(string colorHex)
-    {
-        Color guiColor = Color.white;
-
-        if (!ColorUtility.TryParseHtmlString(colorHex, out guiColor))
+        public GUIColorAttribute(int r, int g, int b)
         {
-            Color = guiColor;
-            return;
+            Color = new Color(r, g, b, 1f);
         }
 
-        Color = guiColor;
+        public GUIColorAttribute(string colorHex)
+        {
+            Color guiColor = Color.white;
+
+            if (!ColorUtility.TryParseHtmlString(colorHex, out guiColor))
+            {
+                Color = guiColor;
+                return;
+            }
+
+            Color = guiColor;
+        }
     }
 }

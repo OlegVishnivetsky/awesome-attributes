@@ -1,76 +1,80 @@
 using UnityEngine;
 using UnityEditor;
 
-/// <summary>
-/// Drawer for required attribute
-/// </summary>
-[CustomPropertyDrawer(typeof(RequiredAttribute))]
-public class RequiredAttributeDrawer : PropertyDrawer
+namespace AwesomeAttributes
 {
-    private const float HelpBoxHeight = 37f;
-    private const float SpaceBetweenHelpBox = 2f;
-    private const float DefaultPropertyHeight = 18f;
-
-    private Rect propertyRect;
-    private float totalHeight;
-
-    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
-    {
-        propertyRect = new Rect(position.x, position.y, position.width, EditorGUI.GetPropertyHeight(property));
-        HandlePropertyFieldDrawing(property, label);
-    }
-
-    public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
-    {
-        return totalHeight;
-    }
-
     /// <summary>
-    /// Handles the drawing of the property field, determining if a help box is needed
+    /// Drawer for required attribute
     /// </summary>
-    /// <param name="property"></param>
-    /// <param name="label"></param>
-    private void HandlePropertyFieldDrawing(SerializedProperty property, GUIContent label)
+    [CustomPropertyDrawer(typeof(RequiredAttribute))]
+    public class RequiredAttributeDrawer : PropertyDrawer
     {
-        RequiredAttribute requiredAttribute = attribute as RequiredAttribute;
+        private const float HelpBoxHeight = 37f;
+        private const float SpaceBetweenHelpBox = 2f;
+        private const float DefaultPropertyHeight = 18f;
 
-        if (property.objectReferenceValue == null)
+        private Rect propertyRect;
+        private float totalHeight;
+
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            DrawFieldWithHelpBox(property, label, requiredAttribute);
+            propertyRect = new Rect(position.x, position.y, position.width, EditorGUI.GetPropertyHeight(property));
+            HandlePropertyFieldDrawing(property, label);
         }
-        else
+
+        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            DrawFieldWithoutHelpBox(property, label);
+            return totalHeight;
         }
-    }
 
-    /// <summary>
-    /// Draws the property field with a help box indicating that the field is required
-    /// </summary>
-    /// <param name="property"></param>
-    /// <param name="label"></param>
-    /// <param name="requiredAttribute"></param>
-    private void DrawFieldWithHelpBox(SerializedProperty property, GUIContent label,
-        RequiredAttribute requiredAttribute)
-    {
-        Rect helpBoxRect = new Rect(propertyRect.xMin, propertyRect.yMax + SpaceBetweenHelpBox, 
-            propertyRect.width, HelpBoxHeight);
-        EditorGUI.PropertyField(propertyRect, property, label);
+        /// <summary>
+        /// Handles the drawing of the property field, determining if a help box is needed
+        /// </summary>
+        /// <param name="property"></param>
+        /// <param name="label"></param>
+        private void HandlePropertyFieldDrawing(SerializedProperty property, GUIContent label)
+        {
+            RequiredAttribute requiredAttribute = attribute as RequiredAttribute;
 
-        totalHeight = propertyRect.height + HelpBoxHeight + SpaceBetweenHelpBox;
+            if (property.objectReferenceValue == null)
+            {
+                DrawFieldWithHelpBox(property, label, requiredAttribute);
+            }
+            else
+            {
+                DrawFieldWithoutHelpBox(property, label);
+            }
+        }
 
-        string message = requiredAttribute.Message ?? $"Field \"{property.name}\" is required";
-        EditorGUI.HelpBox(helpBoxRect, message, requiredAttribute.MessageType);
-    }
+        /// <summary>
+        /// Draws the property field with a help box indicating that the field is required
+        /// </summary>
+        /// <param name="property"></param>
+        /// <param name="label"></param>
+        /// <param name="requiredAttribute"></param>
+        private void DrawFieldWithHelpBox(SerializedProperty property, GUIContent label,
+            RequiredAttribute requiredAttribute)
+        {
+            Rect helpBoxRect = new Rect(propertyRect.xMin, propertyRect.yMax + SpaceBetweenHelpBox,
+                propertyRect.width, HelpBoxHeight);
+            EditorGUI.PropertyField(propertyRect, property, label);
 
-    /// <summary>
-    /// Draws the property field without a help box
-    /// </summary>
-    /// <param name="property"></param>
-    /// <param name="label"></param>
-    private void DrawFieldWithoutHelpBox(SerializedProperty property, GUIContent label)
-    {
-        totalHeight = DefaultPropertyHeight;
-        EditorGUI.PropertyField(propertyRect, property, label);
+            totalHeight = propertyRect.height + HelpBoxHeight + SpaceBetweenHelpBox;
+
+            string message = requiredAttribute.Message ?? $"Field \"{property.name}\" is required";
+            int messageType = (int)requiredAttribute.MessageType;
+            EditorGUI.HelpBox(helpBoxRect, message, (MessageType)messageType);
+        }
+
+        /// <summary>
+        /// Draws the property field without a help box
+        /// </summary>
+        /// <param name="property"></param>
+        /// <param name="label"></param>
+        private void DrawFieldWithoutHelpBox(SerializedProperty property, GUIContent label)
+        {
+            totalHeight = DefaultPropertyHeight;
+            EditorGUI.PropertyField(propertyRect, property, label);
+        }
     }
 }

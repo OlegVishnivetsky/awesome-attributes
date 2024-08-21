@@ -1,36 +1,38 @@
 using UnityEngine;
 
-
-public class ConditionalAttributeBase : PropertyAttribute
+namespace AwesomeAttributes
 {
-    public readonly string[] Conditions;
-    public readonly string ConditionsOperator;
-
-    public readonly object EnumValue;
-    public readonly string EnumFieldName;
-
-    public readonly ShowIfAttributeType ShowIfAttributeType;
-
-    public ConditionalAttributeBase(string condition)
+    public class ConditionalAttributeBase : PropertyAttribute
     {
-        Conditions = new string[] { condition };
+        public readonly string[] Conditions;
+        public readonly string ConditionsOperator;
 
-        ShowIfAttributeType = ShowIfAttributeType.OneCondition;
-    }
+        public readonly object EnumValue;
+        public readonly string EnumFieldName;
 
-    public ConditionalAttributeBase(string conditionsOperator, params string[] conditions)
-    {
-        ConditionsOperator = conditionsOperator;
-        Conditions = conditions;
+        public readonly ShowIfAttributeType ShowIfAttributeType;
 
-        ShowIfAttributeType = ShowIfAttributeType.MultipleConditions;
-    }
+        public ConditionalAttributeBase(string condition)
+        {
+            Conditions = new string[] { condition };
 
-    public ConditionalAttributeBase(object enumValue, string enumFieldName)
-    {
-        EnumValue = enumValue;
-        EnumFieldName = enumFieldName;
+            ShowIfAttributeType = ShowIfAttributeType.OneCondition;
+        }
 
-        ShowIfAttributeType = ShowIfAttributeType.EnumCondition;
+        public ConditionalAttributeBase(string conditionsOperator, params string[] conditions)
+        {
+            ConditionsOperator = conditionsOperator;
+            Conditions = conditions;
+
+            ShowIfAttributeType = ShowIfAttributeType.MultipleConditions;
+        }
+
+        public ConditionalAttributeBase(object enumValue, string enumFieldName)
+        {
+            EnumValue = enumValue;
+            EnumFieldName = enumFieldName;
+
+            ShowIfAttributeType = ShowIfAttributeType.EnumCondition;
+        }
     }
 }

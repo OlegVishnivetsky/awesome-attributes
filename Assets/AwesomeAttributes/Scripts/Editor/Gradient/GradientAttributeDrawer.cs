@@ -1,18 +1,21 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomPropertyDrawer(typeof(GradientAttribute))]
-public class GradientAttributeDrawer : PropertyDrawer
+namespace AwesomeAttributes
 {
-    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+    [CustomPropertyDrawer(typeof(GradientAttribute))]
+    public class GradientAttributeDrawer : PropertyDrawer
     {
-        EditorGUI.BeginProperty(position, label, property);
-
-        if (property.propertyType == SerializedPropertyType.Gradient)
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            property.gradientValue = EditorGUI.GradientField(position, label, property.gradientValue);
+            EditorGUI.BeginProperty(position, label, property);
+
+            if (property.propertyType == SerializedPropertyType.Gradient)
+            {
+                property.gradientValue = EditorGUI.GradientField(position, label, property.gradientValue);
+            }
+
+            EditorGUI.EndProperty();
         }
-        
-        EditorGUI.EndProperty();
     }
 }

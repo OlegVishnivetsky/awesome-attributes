@@ -1,17 +1,20 @@
 using UnityEditor;
 using UnityEngine;
 
-/// <summary>
-/// Custom property drawer for lable attribute
-/// </summary>
-[CustomPropertyDrawer(typeof(LabelAttribute))]
-public class LabelAttributeDrawer : PropertyDrawer
+namespace AwesomeAttributes
 {
-    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+    /// <summary>
+    /// Custom property drawer for lable attribute
+    /// </summary>
+    [CustomPropertyDrawer(typeof(LabelAttribute))]
+    public class LabelAttributeDrawer : PropertyDrawer
     {
-        LabelAttribute lableAttribute = attribute as LabelAttribute;
-        GUIContent newLable = new GUIContent(lableAttribute.Lable);
-        
-        EditorGUI.PropertyField(position, property, newLable);
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+        {
+            LabelAttribute lableAttribute = attribute as LabelAttribute;
+            GUIContent newLable = new GUIContent(lableAttribute.Lable);
+
+            EditorGUI.PropertyField(position, property, newLable);
+        }
     }
 }

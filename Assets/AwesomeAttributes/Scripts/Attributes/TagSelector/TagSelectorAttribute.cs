@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public class TagSelectorAttribute : PropertyAttribute
+namespace AwesomeAttributes
 {
-    public TagSelectorAttribute() { }
+    public class TagSelectorAttribute : PropertyAttribute
+    {
+        public TagSelectorAttribute() { }
+    }
 }

@@ -2,44 +2,47 @@ using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
-/// <summary>
-/// Property drawer for ShowProperty attribute
-/// </summary>
-[CustomPropertyDrawer(typeof(ShowPropertyAttribute))]
-public class ShowPropertyAttributeDrawer : PropertyDrawer
+namespace AwesomeAttributes
 {
-    private PropertyInfo propertyFieldInfo = null;
-
-    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+    /// <summary>
+    /// Property drawer for ShowProperty attribute
+    /// </summary>
+    [CustomPropertyDrawer(typeof(ShowPropertyAttribute))]
+    public class ShowPropertyAttributeDrawer : PropertyDrawer
     {
-        UnityEngine.Object target = property.serializedObject.targetObject;
+        private PropertyInfo propertyFieldInfo = null;
 
-        if (propertyFieldInfo == null)
-            propertyFieldInfo = target.GetType()
-                .GetProperty(((ShowPropertyAttribute)attribute).PropertyName,
-                                                 BindingFlags.Instance 
-                                                 | BindingFlags.Public 
-                                                 | BindingFlags.NonPublic);
-
-        if (propertyFieldInfo != null)
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            object value = propertyFieldInfo.GetValue(target, null);
+            Object target = property.serializedObject.targetObject;
 
-            EditorGUI.BeginChangeCheck();
+            if (propertyFieldInfo == null)
+                propertyFieldInfo = target.GetType()
+                    .GetProperty(((ShowPropertyAttribute)attribute).PropertyName,
+                                                     BindingFlags.Instance
+                                                     | BindingFlags.Public
+                                                     | BindingFlags.NonPublic);
 
-            value = AttributesHelper.DrawPropertyByType(position, property.propertyType,
-                propertyFieldInfo.PropertyType, value, label);
-
-            if (EditorGUI.EndChangeCheck() && propertyFieldInfo != null)
+            if (propertyFieldInfo != null)
             {
-                Undo.RecordObject(target, "Inspector");
-                propertyFieldInfo.SetValue(target, value, null);
-            }
+                object value = propertyFieldInfo.GetValue(target, null);
 
-        }
-        else
-        {
-            EditorGUI.LabelField(position, "Error: could not retrieve property.");
+                EditorGUI.BeginChangeCheck();
+
+                value = AttributesEditorHelper.DrawPropertyByType(position, property.propertyType,
+                    propertyFieldInfo.PropertyType, value, label);
+
+                if (EditorGUI.EndChangeCheck() && propertyFieldInfo != null)
+                {
+                    Undo.RecordObject(target, "Inspector");
+                    propertyFieldInfo.SetValue(target, value, null);
+                }
+
+            }
+            else
+            {
+                EditorGUI.LabelField(position, "Error: could not retrieve property.");
+            }
         }
     }
 }

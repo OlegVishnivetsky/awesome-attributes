@@ -1,26 +1,29 @@
 using UnityEditor;
 using UnityEngine;
 
-/// <summary>
-/// Property drawer for WithoutLabel attribute
-/// </summary>
-[CustomPropertyDrawer(typeof(WithoutLabelAttribute))]
-public class WithoutLabelAttributeDrawer : PropertyDrawer
+namespace AwesomeAttributes
 {
-    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
-    {
-        DrawPropertyWithoutLabel(position, property);
-    }
-
     /// <summary>
-    /// Draws property with empty label
+    /// Property drawer for WithoutLabel attribute
     /// </summary>
-    /// <param name="position"></param>
-    /// <param name="property"></param>
-    private static void DrawPropertyWithoutLabel(Rect position, SerializedProperty property)
+    [CustomPropertyDrawer(typeof(WithoutLabelAttribute))]
+    public class WithoutLabelAttributeDrawer : PropertyDrawer
     {
-        GUIContent newLabel = new GUIContent("");
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+        {
+            DrawPropertyWithoutLabel(position, property);
+        }
 
-        EditorGUI.PropertyField(position, property, newLabel);
+        /// <summary>
+        /// Draws property with empty label
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="property"></param>
+        private static void DrawPropertyWithoutLabel(Rect position, SerializedProperty property)
+        {
+            GUIContent newLabel = new GUIContent("");
+
+            EditorGUI.PropertyField(position, property, newLabel);
+        }
     }
 }

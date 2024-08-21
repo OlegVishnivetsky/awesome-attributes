@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public class SceneAttribute : PropertyAttribute
+namespace AwesomeAttributes
 {
-    public SceneAttribute() { }
+    public class SceneAttribute : PropertyAttribute
+    {
+        public SceneAttribute() { }
+    }
 }

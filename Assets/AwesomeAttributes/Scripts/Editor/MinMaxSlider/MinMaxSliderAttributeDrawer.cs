@@ -1,121 +1,125 @@
 using UnityEditor;
 using UnityEngine;
 
-/// <summary>
-/// Custom property drawer for MinMaxSliderAttribute
-/// </summary>
-[CustomPropertyDrawer(typeof(MinMaxSliderAttribute))]
-public class MinMaxSliderAttributeDrawer : PropertyDrawer
+namespace AwesomeAttributes
 {
-    private const int SplitAmount = 3;
-    private const int FieldPadding = 40;
-    private const int FieldSpace = 5;
 
-    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+    /// <summary>
+    /// Custom property drawer for MinMaxSliderAttribute
+    /// </summary>
+    [CustomPropertyDrawer(typeof(MinMaxSliderAttribute))]
+    public class MinMaxSliderAttributeDrawer : PropertyDrawer
     {
-        MinMaxSliderAttribute minMaxAttribute = attribute as MinMaxSliderAttribute;
+        private const int SplitAmount = 3;
+        private const int FieldPadding = 40;
+        private const int FieldSpace = 5;
 
-        label.tooltip = $"Min: {minMaxAttribute.MinValue}. Max: {minMaxAttribute.MaxValue}";
-
-        Rect controlRect = EditorGUI.PrefixLabel(position, label);
-
-        Rect[] splittedRect = SplitRect(controlRect, SplitAmount);
-
-        switch (property.propertyType)
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            case SerializedPropertyType.Vector2:
-                DrawVector2MinMaxSlider(property, minMaxAttribute, splittedRect);
-                break;
-            case SerializedPropertyType.Vector2Int:
-                DrawVector2IntMinMaxSlider(property, minMaxAttribute, splittedRect);
-                break;
-        }
-    }
+            MinMaxSliderAttribute minMaxAttribute = attribute as MinMaxSliderAttribute;
 
-    /// <summary>
-    /// Draws min/max slider for Vector2 struct
-    /// </summary>
-    /// <param name="property"></param>
-    /// <param name="minMaxSliderAttribute"></param>
-    /// <param name="splittedRect"></param>
-    private void DrawVector2MinMaxSlider(SerializedProperty property, 
-        MinMaxSliderAttribute minMaxSliderAttribute, Rect[] splittedRect)
-    {
-        EditorGUI.BeginChangeCheck();
+            label.tooltip = $"Min: {minMaxAttribute.MinValue}. Max: {minMaxAttribute.MaxValue}";
 
-        Vector2 vector = property.vector2Value;
+            Rect controlRect = EditorGUI.PrefixLabel(position, label);
 
-        float minVal = vector.x;
-        float maxVal = vector.y;
+            Rect[] splittedRect = SplitRect(controlRect, SplitAmount);
 
-        minVal = EditorGUI.FloatField(splittedRect[0], minVal);
-        maxVal = EditorGUI.FloatField(splittedRect[2], maxVal);
-
-        EditorGUI.MinMaxSlider(splittedRect[1], ref minVal, ref maxVal, minMaxSliderAttribute.MinValue, minMaxSliderAttribute.MaxValue);
-
-        minVal = Mathf.Clamp(minVal, minMaxSliderAttribute.MinValue, minMaxSliderAttribute.MaxValue);
-        maxVal = Mathf.Clamp(maxVal, minMaxSliderAttribute.MinValue, minMaxSliderAttribute.MaxValue);
-
-        vector = new Vector2(Mathf.Min(minVal, maxVal), maxVal);
-
-        if (EditorGUI.EndChangeCheck())
-            property.vector2Value = vector;
-    }
-
-    /// <summary>
-    /// Draws min/max slider for Vector2Int struct
-    /// </summary>
-    /// <param name="property"></param>
-    /// <param name="minMaxSliderAttribute"></param>
-    /// <param name="splittedRect"></param>
-    private void DrawVector2IntMinMaxSlider(SerializedProperty property, 
-        MinMaxSliderAttribute minMaxSliderAttribute, Rect[] splittedRect)
-    {
-        EditorGUI.BeginChangeCheck();
-
-        Vector2Int vector = property.vector2IntValue;
-        float minVal = vector.x;
-        float maxVal = vector.y;
-
-        minVal = EditorGUI.FloatField(splittedRect[0], minVal);
-        maxVal = EditorGUI.FloatField(splittedRect[2], maxVal);
-
-        EditorGUI.MinMaxSlider(splittedRect[1], ref minVal, ref maxVal, 
-            minMaxSliderAttribute.MinValue, minMaxSliderAttribute.MaxValue);
-
-        minVal = Mathf.Clamp(minVal, minMaxSliderAttribute.MinValue, minMaxSliderAttribute.MaxValue);
-        maxVal = Mathf.Clamp(maxVal, minMaxSliderAttribute.MinValue, minMaxSliderAttribute.MaxValue);
-
-        vector = new Vector2Int(Mathf.FloorToInt(Mathf.Min(minVal, maxVal)), Mathf.FloorToInt(maxVal));
-
-        if (EditorGUI.EndChangeCheck())
-            property.vector2IntValue = vector;
-    }
-
-    /// <summary>
-    /// Splits a rectangle into a certain number of parts 
-    /// </summary>
-    /// <param name="rectToSplit"></param>
-    /// <param name="amount"></param>
-    /// <returns></returns>
-    private Rect[] SplitRect(Rect rectToSplit, int amount)
-    {
-        Rect[] rects = new Rect[amount];
-
-        for (int i = 0; i < amount; i++)
-        {
-            rects[i] = new Rect(rectToSplit.position.x + (i * rectToSplit.width / amount), 
-                rectToSplit.position.y, rectToSplit.width / amount, rectToSplit.height);
+            switch (property.propertyType)
+            {
+                case SerializedPropertyType.Vector2:
+                    DrawVector2MinMaxSlider(property, minMaxAttribute, splittedRect);
+                    break;
+                case SerializedPropertyType.Vector2Int:
+                    DrawVector2IntMinMaxSlider(property, minMaxAttribute, splittedRect);
+                    break;
+            }
         }
 
-        rects[0].width -= FieldPadding + FieldSpace;
-        rects[2].width -= FieldPadding + FieldSpace;
+        /// <summary>
+        /// Draws min/max slider for Vector2 struct
+        /// </summary>
+        /// <param name="property"></param>
+        /// <param name="minMaxSliderAttribute"></param>
+        /// <param name="splittedRect"></param>
+        private void DrawVector2MinMaxSlider(SerializedProperty property,
+            MinMaxSliderAttribute minMaxSliderAttribute, Rect[] splittedRect)
+        {
+            EditorGUI.BeginChangeCheck();
 
-        rects[1].x -= FieldPadding;
-        rects[1].width += FieldPadding * 2;
+            Vector2 vector = property.vector2Value;
 
-        rects[2].x += FieldPadding + FieldSpace;
+            float minVal = vector.x;
+            float maxVal = vector.y;
 
-        return rects;
+            minVal = EditorGUI.FloatField(splittedRect[0], minVal);
+            maxVal = EditorGUI.FloatField(splittedRect[2], maxVal);
+
+            EditorGUI.MinMaxSlider(splittedRect[1], ref minVal, ref maxVal, minMaxSliderAttribute.MinValue, minMaxSliderAttribute.MaxValue);
+
+            minVal = Mathf.Clamp(minVal, minMaxSliderAttribute.MinValue, minMaxSliderAttribute.MaxValue);
+            maxVal = Mathf.Clamp(maxVal, minMaxSliderAttribute.MinValue, minMaxSliderAttribute.MaxValue);
+
+            vector = new Vector2(Mathf.Min(minVal, maxVal), maxVal);
+
+            if (EditorGUI.EndChangeCheck())
+                property.vector2Value = vector;
+        }
+
+        /// <summary>
+        /// Draws min/max slider for Vector2Int struct
+        /// </summary>
+        /// <param name="property"></param>
+        /// <param name="minMaxSliderAttribute"></param>
+        /// <param name="splittedRect"></param>
+        private void DrawVector2IntMinMaxSlider(SerializedProperty property,
+            MinMaxSliderAttribute minMaxSliderAttribute, Rect[] splittedRect)
+        {
+            EditorGUI.BeginChangeCheck();
+
+            Vector2Int vector = property.vector2IntValue;
+            float minVal = vector.x;
+            float maxVal = vector.y;
+
+            minVal = EditorGUI.FloatField(splittedRect[0], minVal);
+            maxVal = EditorGUI.FloatField(splittedRect[2], maxVal);
+
+            EditorGUI.MinMaxSlider(splittedRect[1], ref minVal, ref maxVal,
+                minMaxSliderAttribute.MinValue, minMaxSliderAttribute.MaxValue);
+
+            minVal = Mathf.Clamp(minVal, minMaxSliderAttribute.MinValue, minMaxSliderAttribute.MaxValue);
+            maxVal = Mathf.Clamp(maxVal, minMaxSliderAttribute.MinValue, minMaxSliderAttribute.MaxValue);
+
+            vector = new Vector2Int(Mathf.FloorToInt(Mathf.Min(minVal, maxVal)), Mathf.FloorToInt(maxVal));
+
+            if (EditorGUI.EndChangeCheck())
+                property.vector2IntValue = vector;
+        }
+
+        /// <summary>
+        /// Splits a rectangle into a certain number of parts 
+        /// </summary>
+        /// <param name="rectToSplit"></param>
+        /// <param name="amount"></param>
+        /// <returns></returns>
+        private Rect[] SplitRect(Rect rectToSplit, int amount)
+        {
+            Rect[] rects = new Rect[amount];
+
+            for (int i = 0; i < amount; i++)
+            {
+                rects[i] = new Rect(rectToSplit.position.x + i * rectToSplit.width / amount,
+                    rectToSplit.position.y, rectToSplit.width / amount, rectToSplit.height);
+            }
+
+            rects[0].width -= FieldPadding + FieldSpace;
+            rects[2].width -= FieldPadding + FieldSpace;
+
+            rects[1].x -= FieldPadding;
+            rects[1].width += FieldPadding * 2;
+
+            rects[2].x += FieldPadding + FieldSpace;
+
+            return rects;
+        }
     }
-} 
+}
