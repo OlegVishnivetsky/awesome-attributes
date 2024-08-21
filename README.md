@@ -27,6 +27,13 @@ Overview Video: https://www.youtube.com/watch?v=FhUs-C4zX_s&t=14s&ab_channel=che
 1. Download .zip from git hub page and extract forder.
 2. Go to ‘Package Manager’ - + - ‘Add package from disk’  and select package.json file.
 
+### 4️⃣ OpenUPM
+
+Also this package available on [OpenUPM](https://openupm.com/packages/com.cherrydev.awesomeattributes/). You can install it using [openupm-cli](https://github.com/openupm/openupm-cli).
+Install via command-line interface
+```
+  openupm add com.cherrydev.awesomeattributes
+```
 ---
 # 📝 Documentation
 
