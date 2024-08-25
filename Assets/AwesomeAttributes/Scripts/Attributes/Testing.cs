@@ -2,7 +2,10 @@ using UnityEngine;
 using AwesomeAttributes;
 
 public class Testing : MonoBehaviour
-{ 
+{
+    [Preview]
+    [SerializeField] private Sprite testSprite;
+
     [Gradient] 
     [SerializeField] private Gradient _gradient;
     
