@@ -278,6 +278,18 @@ Gradient attribute that allows you editing Gradient fields directly in the Inspe
     [SerializeField] private Gradient gradient;
 ```
 
+## 17.  Preview
+
+Preview attribute that can be used for sprite fields. Draws a foldout that can be toggled to see a preview of the sprite.
+
+```csharp
+    [Preview]
+    [SerializeField] private Sprite testSprite;
+```
+<img src="https://github.com/user-attachments/assets/3b09c22f-07f6-475f-b2fa-06793a7e90f4">
+
+<h1></h1>
+
 ⭐⭐⭐⭐⭐ If you want to add your attribute. Then please follow the folder structure as in the asset and make a pull request. Feel free to edit any code to suit your needs. If you find any bugs or have any questions, you can write about it to me by email, github or in reviews in the Unity Asset Store. I will also be pleased if you visit my itchio page.  😄
 
 Gmail: olegmroleg@gmail.com
