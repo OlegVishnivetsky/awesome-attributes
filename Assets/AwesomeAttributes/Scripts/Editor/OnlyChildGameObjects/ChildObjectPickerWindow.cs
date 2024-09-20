@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using System.Reflection;
 
-namespace AwesomeAttributes
+namespace AwesomeAttributes.Editor
 {
     /// <summary>
     /// Custom object picker editor window
@@ -124,16 +124,25 @@ namespace AwesomeAttributes
         /// <param name="parentTransform"></param>
         /// <param name="fieldType"></param>
         /// <returns></returns>
-        private static List<GameObject> GetChildObjects(Transform parentTransform, Type fieldType)
+        private static List<GameObject> GetChildObjects(Transform parentTransform, 
+            Type fieldType)
         {
             List<GameObject> childObjects = new List<GameObject>();
 
             for (int i = 0; i < parentTransform.childCount; i++)
             {
                 Transform child = parentTransform.GetChild(i);
-                if (child.GetComponent(fieldType) != null)
+
+                if (fieldType == typeof(GameObject))
                 {
                     childObjects.Add(child.gameObject);
+                }
+                else if (typeof(Component).IsAssignableFrom(fieldType))
+                {
+                    if (child.GetComponent(fieldType) != null)
+                    {
+                        childObjects.Add(child.gameObject);
+                    }
                 }
             }
 

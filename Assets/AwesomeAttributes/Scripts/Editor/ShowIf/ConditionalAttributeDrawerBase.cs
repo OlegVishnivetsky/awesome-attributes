@@ -4,7 +4,7 @@ using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
-namespace AwesomeAttributes
+namespace AwesomeAttributes.Editor
 {
     public abstract class ConditionalAttributeDrawerBase : PropertyDrawer
     {

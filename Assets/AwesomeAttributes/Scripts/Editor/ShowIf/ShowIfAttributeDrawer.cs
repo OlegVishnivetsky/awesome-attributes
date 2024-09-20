@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace AwesomeAttributes
+namespace AwesomeAttributes.Editor
 {
     /// <summary>
     /// Property drawer for ShowIf attribute

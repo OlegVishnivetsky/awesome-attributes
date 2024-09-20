@@ -1,5 +1,8 @@
 using UnityEngine;
 
-public class PreviewAttribute : PropertyAttribute
+namespace AwesomeAttributes
 {
+    public class PreviewAttribute : PropertyAttribute
+    {
+    }
 }

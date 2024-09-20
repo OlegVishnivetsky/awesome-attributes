@@ -3,7 +3,7 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-namespace AwesomeAttributes
+namespace AwesomeAttributes.Editor
 {
     [CustomPropertyDrawer(typeof(SceneAttribute))]
     public class SceneAttributeDrawer : PropertyDrawer
@@ -63,7 +63,9 @@ namespace AwesomeAttributes
                 property.stringValue));
             selectedIndex = EditorGUI.Popup(position, label.text, selectedIndex,
                 sceneNames);
-            property.stringValue = sceneNames[selectedIndex];
+
+            if (sceneNames.Length > 0)
+                property.stringValue = sceneNames[selectedIndex];
         }
 
         private void DrawSceneAssetField(Rect position, SerializedProperty property, GUIContent label)

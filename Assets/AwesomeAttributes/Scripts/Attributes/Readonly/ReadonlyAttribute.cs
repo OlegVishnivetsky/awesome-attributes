@@ -9,5 +9,11 @@ namespace AwesomeAttributes
     [AttributeUsage(AttributeTargets.Field)]
     public class ReadonlyAttribute : PropertyAttribute
     {
+        public readonly ReadonlyType ReadonlyType;
+
+        public ReadonlyAttribute(ReadonlyType readonlyType = ReadonlyType.Always)
+        {
+            ReadonlyType = readonlyType;
+        }
     }
 }

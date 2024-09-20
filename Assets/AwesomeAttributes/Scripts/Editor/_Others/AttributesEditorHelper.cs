@@ -3,7 +3,7 @@ using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
-namespace AwesomeAttributes
+namespace AwesomeAttributes.Editor
 {
     /// <summary>
     /// Class that contains useful methods for attribute drawers

@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace AwesomeAttributes
+namespace AwesomeAttributes.Editor
 {
     /// <summary>
     /// Property drawer for Readonly attribute
@@ -11,7 +11,23 @@ namespace AwesomeAttributes
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            DrawReadonlyField(position, property, label);
+            ReadonlyAttribute readonlyAttribute = attribute as ReadonlyAttribute;
+            bool isReadonly = false;
+
+            switch (readonlyAttribute.ReadonlyType)
+            {
+                case ReadonlyType.Always:
+                    isReadonly = true;
+                    break;
+                case ReadonlyType.InPlayMode:
+                    isReadonly = Application.isPlaying;
+                    break;
+
+                default:
+                    break;
+            }
+
+            DrawReadonlyField(position, property, label, isReadonly);
         }
 
         /// <summary>
@@ -20,9 +36,10 @@ namespace AwesomeAttributes
         /// <param name="position"></param>
         /// <param name="property"></param>
         /// <param name="label"></param>
-        private static void DrawReadonlyField(Rect position, SerializedProperty property, GUIContent label)
+        private static void DrawReadonlyField(Rect position, SerializedProperty property, 
+            GUIContent label, bool isReadonly)
         {
-            GUI.enabled = false;
+            GUI.enabled = !isReadonly;
             EditorGUI.PropertyField(position, property, label);
             GUI.enabled = true;
         }

@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace AwesomeAttributes
+namespace AwesomeAttributes.Editor
 {
     /// <summary>
     /// Title attribute drawer
@@ -14,7 +14,6 @@ namespace AwesomeAttributes
 
         private const float WithSubTitleHeight = 40f;
         private const float OnlyTitleHeight = 25f;
-
         private const float SeparationLineTopPadding = -4f;
 
         public override void OnGUI(Rect position)

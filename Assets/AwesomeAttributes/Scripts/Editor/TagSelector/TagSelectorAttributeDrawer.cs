@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace AwesomeAttributes
+namespace AwesomeAttributes.Editor
 {
     [CustomPropertyDrawer(typeof(TagSelectorAttribute))]
     public class TagSelectorAttributeDrawer : PropertyDrawer

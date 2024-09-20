@@ -2,7 +2,7 @@ using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
-namespace AwesomeAttributes
+namespace AwesomeAttributes.Editor
 {
     /// <summary>
     /// Custom property drawer for button attribute

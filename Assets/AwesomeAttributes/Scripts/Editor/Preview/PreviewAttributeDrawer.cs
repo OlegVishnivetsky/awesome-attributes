@@ -1,68 +1,71 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-[CustomPropertyDrawer(typeof(PreviewAttribute))]
-public class PreviewAttributeDrawer : PropertyDrawer
+namespace AwesomeAttributes.Editor
 {
-    private bool foldoutState = false;
-
-    private const float FoldoutWidth = 15f;
-
-    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+    [CustomPropertyDrawer(typeof(PreviewAttribute))]
+    public class PreviewAttributeDrawer : PropertyDrawer
     {
-        EditorGUI.BeginProperty(position, label, property);
+        private bool foldoutState = false;
 
+        private const float FoldoutWidth = 15f;
 
-        Rect foldoutRect = new Rect(position.x, position.y, FoldoutWidth,
-            EditorGUIUtility.singleLineHeight);
-        Rect labelRect = new Rect(position.x + FoldoutWidth, position.y, 
-            position.width, EditorGUIUtility.singleLineHeight);
-        Rect fieldRect = new Rect(position.x + EditorGUIUtility.labelWidth, position.y, 
-            position.width - EditorGUIUtility.labelWidth, 
-            EditorGUIUtility.singleLineHeight);
-
-        foldoutState = EditorGUI.Foldout(foldoutRect, foldoutState, 
-            GUIContent.none, true);
-
-        EditorGUI.LabelField(labelRect, label);
-        EditorGUI.PropertyField(fieldRect, property, GUIContent.none);
-
-        if (foldoutState && property.objectReferenceValue != null)
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            Sprite sprite = property.objectReferenceValue as Sprite;
+            EditorGUI.BeginProperty(position, label, property);
 
-            if (sprite != null)
+
+            Rect foldoutRect = new Rect(position.x, position.y, FoldoutWidth,
+                EditorGUIUtility.singleLineHeight);
+            Rect labelRect = new Rect(position.x + FoldoutWidth, position.y,
+                position.width, EditorGUIUtility.singleLineHeight);
+            Rect fieldRect = new Rect(position.x + EditorGUIUtility.labelWidth, position.y,
+                position.width - EditorGUIUtility.labelWidth,
+                EditorGUIUtility.singleLineHeight);
+
+            foldoutState = EditorGUI.Foldout(foldoutRect, foldoutState,
+                GUIContent.none, true);
+
+            EditorGUI.LabelField(labelRect, label);
+            EditorGUI.PropertyField(fieldRect, property, GUIContent.none);
+
+            if (foldoutState && property.objectReferenceValue != null)
             {
-                Rect previewRect = new Rect(position.x, position.y 
-                    + EditorGUIUtility.singleLineHeight + 2, position.width, 70f);
-                float aspectRatio = sprite.rect.width / sprite.rect.height;
-                float previewHeight = Mathf.Min(previewRect.width 
-                    / aspectRatio, previewRect.height);
-                float previewWidth = previewHeight * aspectRatio;
+                Sprite sprite = property.objectReferenceValue as Sprite;
 
-                Rect spriteRect = new Rect(
-                    previewRect.x + (previewRect.width - previewWidth) / 2,
-                    previewRect.y,
-                    previewWidth,
-                    previewHeight
-                );
+                if (sprite != null)
+                {
+                    Rect previewRect = new Rect(position.x, position.y
+                        + EditorGUIUtility.singleLineHeight + 2, position.width, 70f);
+                    float aspectRatio = sprite.rect.width / sprite.rect.height;
+                    float previewHeight = Mathf.Min(previewRect.width
+                        / aspectRatio, previewRect.height);
+                    float previewWidth = previewHeight * aspectRatio;
 
-                EditorGUI.DrawPreviewTexture(spriteRect, sprite.texture);
+                    Rect spriteRect = new Rect(
+                        previewRect.x + (previewRect.width - previewWidth) / 2,
+                        previewRect.y,
+                        previewWidth,
+                        previewHeight
+                    );
+
+                    EditorGUI.DrawPreviewTexture(spriteRect, sprite.texture);
+                }
             }
+
+            EditorGUI.EndProperty();
         }
 
-        EditorGUI.EndProperty();
-    }
-
-    public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
-    {
-        float baseHeight = EditorGUIUtility.singleLineHeight;
-
-        if (foldoutState)
+        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            baseHeight += 72f;
-        }
+            float baseHeight = EditorGUIUtility.singleLineHeight;
 
-        return baseHeight;
+            if (foldoutState)
+            {
+                baseHeight += 72f;
+            }
+
+            return baseHeight;
+        }
     }
 }

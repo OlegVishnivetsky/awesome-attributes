@@ -1,0 +1,16 @@
+{
+    "name": "AwesomeAttributes.Demo",
+    "rootNamespace": "",
+    "references": [
+        "GUID:b0b91c3a9a78b36408b74932282c6dd2"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

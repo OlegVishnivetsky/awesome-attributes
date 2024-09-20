@@ -2,7 +2,7 @@ using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
-namespace AwesomeAttributes
+namespace AwesomeAttributes.Editor
 {
     /// <summary>
     /// Draws the OnlyChildGameObjects attribute in the Unity Inspector
@@ -75,12 +75,25 @@ namespace AwesomeAttributes
             {
                 ChildObjectPickerWindow.ShowWindow(targetComponent.transform, fieldInfo,
                     (pickedObject) =>
-                {
-                    fieldInfo.SetValue(property.serializedObject.targetObject,
-                        pickedObject.GetComponent(fieldInfo.FieldType));
+                    {
+                        object valueToSet = null;
 
-                    property.serializedObject.ApplyModifiedProperties();
-                });
+                        if (fieldInfo.FieldType == typeof(GameObject))
+                        {
+                            valueToSet = pickedObject;
+                        }
+                        else if (typeof(Component).IsAssignableFrom(fieldInfo.FieldType))
+                        {
+                            valueToSet = pickedObject.GetComponent(fieldInfo.FieldType);
+                        }
+
+                        if (valueToSet != null)
+                        {
+                            fieldInfo.SetValue(property.serializedObject.targetObject,
+                                valueToSet);
+                            property.serializedObject.ApplyModifiedProperties();
+                        }
+                    });
             }
         }
     }

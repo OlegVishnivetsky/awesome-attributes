@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace AwesomeAttributes
+namespace AwesomeAttributes.Editor
 {
     public static class AttributesLogger
     {
