@@ -1,6 +1,6 @@
 {
   "name": "com.cherrydev.awesomeattributes",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "displayName": "AwesomeAttributes",
   "description": "Unity asset designed to speed up and improve your development process. Adds a large number of attributes with which you can make your inspector more beautiful and convenient.",
   "unity": "2019.1",
@@ -15,6 +15,14 @@
     "attributes",
     "editor",
     "inspector"
+  ],
+
+  "samples": [
+    {
+      "displayName": "DemoScene",
+      "description": "A scene that demonstrates all the attributes.",
+      "path": "Samples/DemoScene"
+    }
   ],
 
   "author": {
