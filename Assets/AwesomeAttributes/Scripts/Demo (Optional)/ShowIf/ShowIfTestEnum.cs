@@ -1,5 +1,8 @@
-public enum ShowIfTestEnum 
+namespace AwesomeAttributes.Demo
 {
-    Show,
-    Hide
+    public enum ShowIfTestEnum
+    {
+        Show,
+        Hide
+    }
 }

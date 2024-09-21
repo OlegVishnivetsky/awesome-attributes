@@ -1,8 +1,10 @@
-using AwesomeAttributes;
 using UnityEngine;
 
-public class LabelDemo : MonoBehaviour
+namespace AwesomeAttributes.Demo
 {
-    [Label("Short Name")]
-    [SerializeField] private string veryVeryLongName;
+    public class LabelDemo : MonoBehaviour
+    {
+        [Label("Short Name")]
+        [SerializeField] private string veryVeryLongName;
+    }
 }

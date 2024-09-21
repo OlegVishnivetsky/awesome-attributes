@@ -1,8 +1,10 @@
-using AwesomeAttributes;
 using UnityEngine;
 
-public class OnlyChildGameObjectsDemo : MonoBehaviour
+namespace AwesomeAttributes.Demo
 {
-    [OnlyChildGameObjects]
-    [SerializeField] private CircleCollider2D onlyChild;
+    public class OnlyChildGameObjectsDemo : MonoBehaviour
+    {
+        [OnlyChildGameObjects]
+        [SerializeField] private CircleCollider2D onlyChild;
+    }
 }

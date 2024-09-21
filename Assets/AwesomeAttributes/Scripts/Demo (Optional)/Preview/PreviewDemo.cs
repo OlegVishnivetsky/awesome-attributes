@@ -1,8 +1,10 @@
-using AwesomeAttributes;
 using UnityEngine;
 
-public class PreviewDemo : MonoBehaviour
+namespace AwesomeAttributes.Demo
 {
-    [Preview]
-    [SerializeField] private Sprite sprite;
+    public class PreviewDemo : MonoBehaviour
+    {
+        [Preview]
+        [SerializeField] private Sprite sprite;
+    }
 }

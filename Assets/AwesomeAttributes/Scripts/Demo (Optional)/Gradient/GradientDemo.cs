@@ -1,8 +1,10 @@
-using AwesomeAttributes;
 using UnityEngine;
 
-public class GradientDemo : MonoBehaviour
+namespace AwesomeAttributes.Demo
 {
-    [Gradient()]
-    [SerializeField] private Gradient gradientColor;
+    public class GradientDemo : MonoBehaviour
+    {
+        [Gradient()]
+        [SerializeField] private Gradient gradientColor;
+    }
 }

@@ -1,15 +1,17 @@
-using AwesomeAttributes;
 using UnityEngine;
 
-public class PlayerPrefsDemo : MonoBehaviour
+namespace AwesomeAttributes.Demo
 {
-    [PlayerPrefs(SaveMeTestKey)]
-    [SerializeField] private int saveMe;
-
-    private const string SaveMeTestKey = "SaveMeKey";
-
-    private void Awake()
+    public class PlayerPrefsDemo : MonoBehaviour
     {
-        saveMe = PlayerPrefs.GetInt(SaveMeTestKey, 0);
+        [PlayerPrefs(SaveMeTestKey)]
+        [SerializeField] private int saveMe;
+
+        private const string SaveMeTestKey = "SaveMeKey";
+
+        private void Awake()
+        {
+            saveMe = PlayerPrefs.GetInt(SaveMeTestKey, 0);
+        }
     }
 }

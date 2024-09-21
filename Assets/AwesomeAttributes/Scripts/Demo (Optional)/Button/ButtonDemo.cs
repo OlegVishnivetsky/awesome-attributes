@@ -1,21 +1,23 @@
-using AwesomeAttributes;
 using UnityEngine;
 
-public class ButtonDemo : MonoBehaviour
+namespace AwesomeAttributes.Demo
 {
-    [Button("DebugHealth")]
-    [SerializeField] private float health;
-
-    [Button("DebugWithTitle", "With Custom Label and Height", 50f)]
-    [SerializeField] private string withTitle;
-
-    public void DebugHealth()
+    public class ButtonDemo : MonoBehaviour
     {
-        Debug.Log($"Health: {health}");
-    }
+        [Button("DebugHealth")]
+        [SerializeField] private float health;
 
-    public void DebugWithTitle()
-    {
-        Debug.Log("Button clicked");
+        [Button("DebugWithTitle", "With Custom Label and Height", 50f)]
+        [SerializeField] private string withTitle;
+
+        public void DebugHealth()
+        {
+            Debug.Log($"Health: {health}");
+        }
+
+        public void DebugWithTitle()
+        {
+            Debug.Log("Button clicked");
+        }
     }
 }

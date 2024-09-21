@@ -1,8 +1,10 @@
-using AwesomeAttributes;
 using UnityEngine;
 
-public class SceneDemo : MonoBehaviour
+namespace AwesomeAttributes.Demo
 {
-    [Scene]
-    [SerializeField] private string sceneName;
+    public class SceneDemo : MonoBehaviour
+    {
+        [Scene]
+        [SerializeField] private string sceneName;
+    }
 }

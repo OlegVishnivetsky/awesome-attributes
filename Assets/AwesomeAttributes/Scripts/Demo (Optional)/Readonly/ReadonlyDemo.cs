@@ -1,11 +1,13 @@
-using AwesomeAttributes;
 using UnityEngine;
 
-public class ReadonlyDemo : MonoBehaviour
+namespace AwesomeAttributes.Demo
 {
-    [Readonly]
-    [SerializeField] private string readonlyString = "I am read only";
+    public class ReadonlyDemo : MonoBehaviour
+    {
+        [Readonly]
+        [SerializeField] private string readonlyString = "I am read only";
 
-    [Readonly(ReadonlyType.InPlayMode)]
-    [SerializeField] private string inPlayMode = "I am read only in play mode";
+        [Readonly(ReadonlyType.InPlayMode)]
+        [SerializeField] private string inPlayMode = "I am read only in play mode";
+    }
 }

@@ -1,8 +1,10 @@
-using AwesomeAttributes;
 using UnityEngine;
 
-public class TagSelectorDemo : MonoBehaviour
+namespace AwesomeAttributes.Demo
 {
-    [TagSelector]
-    [SerializeField] private string playerTag;
+    public class TagSelectorDemo : MonoBehaviour
+    {
+        [TagSelector]
+        [SerializeField] private string playerTag;
+    }
 }
