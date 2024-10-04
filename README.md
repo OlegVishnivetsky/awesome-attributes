@@ -16,7 +16,8 @@ Overview Video: https://www.youtube.com/watch?v=FhUs-C4zX_s&t=14s&ab_channel=che
 
 ### 1️⃣ Unity asset store (not yet available)
 
-1. Directly from Unity asset store. Link soon 
+1. Directly from Unity asset store.
+   Link: https://assetstore.unity.com/packages/tools/gui/awesome-attributes-296859
 
 ### 2️⃣ Using GitHub link
 
