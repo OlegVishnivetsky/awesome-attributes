@@ -7,7 +7,7 @@ namespace AwesomeAttributes.Demo
         [Button("DebugHealth")]
         [SerializeField] private float health;
 
-        [Button("DebugWithTitle", "With Custom Label and Height", 50f)]
+        [Button(nameof(DebugWithParameters), "With Custom Label and Height", 50f)]
         [SerializeField] private string withTitle;
 
         public void DebugHealth()
@@ -15,9 +15,9 @@ namespace AwesomeAttributes.Demo
             Debug.Log($"Health: {health}");
         }
 
-        public void DebugWithTitle()
+        public void DebugWithParameters(string text, int health)
         {
-            Debug.Log("Button clicked");
+            Debug.Log($"Text: {text}, 2 * health = {health * 2}");
         }
     }
 }
