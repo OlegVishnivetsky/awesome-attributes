@@ -16,14 +16,15 @@ Overview Video: https://www.youtube.com/watch?v=FhUs-C4zX_s&t=14s&ab_channel=che
 
 ### 1️⃣ Unity asset store (not yet available)
 
-1. Directly from Unity asset store.
-   Link: https://assetstore.unity.com/packages/tools/gui/awesome-attributes-296859
+1. Directly from Unity [Asset Store](https://assetstore.unity.com/packages/tools/gui/awesome-attributes-296859).
 
 ### 2️⃣ Using GitHub link
 
-1. Go to ‘Package Manager’ - + - ‘Add package from git URL’ and paste [https://github.com/OlegVishnivetsky/awesome-attributes.git?path=/Assets/AwesomeAttributes](https://github.com/OlegVishnivetsky/awesome-attributes.git?path=/Assets/AwesomeAttributes)
-
-### 3️⃣ Add from disk
+1. Go to ‘Package Manager’ - + - ‘Add package from git URL’ and paste this
+```
+https://github.com/OlegVishnivetsky/awesome-attributes.git?path=/Assets/Plugins/AwesomeAttributes
+``` 
+### 3️⃣ Add from disk or using .unitypackage file from 'Release'
 
 1. Download .zip from git hub page and extract forder.
 2. Go to ‘Package Manager’ - + - ‘Add package from disk’  and select package.json file.
@@ -187,7 +188,8 @@ Hides the field label
 
 ## 10.  Button
 
-Shows a **button** under the field to which you placed the attribute. The name of the method is specified as a parameter; you can also specify the **label** and **height**.
+Shows a **button** under the field to which the attribute is applied. The name of the method is specified as a parameter, and you can also specify the label and height.
+The Button attribute now supports **methods with parameters**. The inspector displays fields for each parameter based on its type (e.g., int, float, string, bool). These fields allow you to input values, which are passed to the method when the button is clicked.
 
 ```csharp
     [Button("DebugCurrentHealth", "Check Health")]
@@ -198,7 +200,7 @@ Shows a **button** under the field to which you placed the attribute. The name o
     public ButtonAttribute(string methodName, string lable = null, float height = 18)
 ```
 
-<img src="https://github.com/OlegVishnivetsky/awesome-attributes/assets/98222611/0930c652-c00f-47fa-86dc-eb4951c76a6a">
+<img src="https://github.com/user-attachments/assets/e63bd819-2190-4eb0-b78b-6252042967f6">
 
 ## 11.  Required
 
@@ -253,8 +255,7 @@ Allows you to select a scene from the drop-down list in the Inspector for string
 
 ## 15.  PlayerPrefs
 
-All fields marked with this attribute will be automatically saved in the OnDestroy or OnDisable methods. For this attribute to work, you need to add PlayerPrefsAttributeObserver prefab to the scene. 
-As a parameter, the attribute requires a key and the type when it will be saved (optional, by default everything is saved in OnDisable()).
+All fields marked with this attribute will be automatically loaded in the Awake() method and saved in either the OnDestroy() or OnDisable() methods. By default, values are saved in OnDisable(), but you can specify OnDestroy() as an alternative. To make this functionality work, you need to add the PlayerPrefsAttributeObserver prefab to the scene. The attribute requires a key and an optional save trigger type to specify when the value will be saved.
 
 ```csharp
     [PlayerPrefs("SaveMe")]
