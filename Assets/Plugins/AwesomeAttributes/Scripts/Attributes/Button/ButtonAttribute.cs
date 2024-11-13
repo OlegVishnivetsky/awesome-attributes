@@ -13,7 +13,7 @@ namespace AwesomeAttributes
         public readonly string Lable;
         public readonly float Height;
 
-        public ButtonAttribute(string methodName, string lable = null, float height = 18)
+        public ButtonAttribute(string methodName, string lable = null, float height = 22)
         {
             if (lable == null)
             {

@@ -98,6 +98,8 @@ namespace AwesomeAttributes.Editor
             {
                 EditorGUILayout.HelpBox($"Method '{buttonAttribute.MethodName}' not found on target object.", MessageType.Warning);
             }
+            
+            EditorGUILayout.Space();
         }
 
         private void DrawButton(ButtonAttribute buttonAttribute, 
