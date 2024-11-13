@@ -200,7 +200,7 @@ The Button attribute now supports **methods with parameters**. The inspector dis
     public ButtonAttribute(string methodName, string lable = null, float height = 18)
 ```
 
-<img src="https://github.com/user-attachments/assets/e63bd819-2190-4eb0-b78b-6252042967f6">
+<img src="https://github.com/user-attachments/assets/b3d00078-0256-4d8f-ba0d-b960d2b43719">
 
 ## 11.  Required
 
