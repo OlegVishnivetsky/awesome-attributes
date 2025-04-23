@@ -14,7 +14,7 @@ Overview Video: https://www.youtube.com/watch?v=FhUs-C4zX_s&t=14s&ab_channel=che
 
 # 📥 Installation
 
-### 1️⃣ Unity asset store (not yet available)
+### 1️⃣ Unity asset store
 
 1. Directly from Unity [Asset Store](https://assetstore.unity.com/packages/tools/gui/awesome-attributes-296859).
 
