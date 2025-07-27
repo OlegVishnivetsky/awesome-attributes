@@ -31,20 +31,15 @@ namespace AwesomeAttributes.Editor
             scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
 
             foreach (GameObject child in childObjects)
-            {
                 DrawChildItem(child);
-            }
-
+            
             EditorGUILayout.EndScrollView();
         }
 
         /// <summary>
         /// Draws the header lable field
         /// </summary>
-        private void DrawHeader()
-        {
-            EditorGUILayout.LabelField("Select a Child GameObject", EditorStyles.boldLabel);
-        }
+        private void DrawHeader() => EditorGUILayout.LabelField("Select a Child GameObject", EditorStyles.boldLabel);
 
         /// <summary>
         /// Draws child items with label, background box and assign button
@@ -69,21 +64,16 @@ namespace AwesomeAttributes.Editor
         /// Creates a background box 
         /// </summary>
         /// <param name="rect"></param>
-        private void DrawBackgroundBox(Rect rect)
-        {
-            GUI.Box(rect, GUIContent.none);
-        }
+        private void DrawBackgroundBox(Rect rect) => GUI.Box(rect, GUIContent.none);
 
         /// <summary>
         /// Draws item label
         /// </summary>
         /// <param name="rect"></param>
         /// <param name="label"></param>
-        private void DrawLabel(Rect rect, string label)
-        {
+        private void DrawLabel(Rect rect, string label) =>
             GUI.Label(new Rect(rect.x + LabelOffsetX, rect.y + LabelOffsetY,
                 200, 20), label);
-        }
 
         /// <summary>
         /// Draws assign button
@@ -114,7 +104,6 @@ namespace AwesomeAttributes.Editor
             window.onPicked = onPicked;
             window.childObjects = GetChildObjects(parentTransform, fieldInfo.FieldType);
             window.AdjustWindowSize();
-
             window.Show();
         }
 

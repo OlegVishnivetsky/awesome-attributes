@@ -33,11 +33,9 @@ namespace AwesomeAttributes.Editor
         /// </summary>
         /// <param name="property">The serialized property.</param>
         /// <returns>The FieldInfo for the property.</returns>
-        private FieldInfo GetFieldInfo(SerializedProperty property)
-        {
-            return AttributesEditorHelper.GetFieldInfo(property.propertyPath,
+        private FieldInfo GetFieldInfo(SerializedProperty property) =>
+            AttributesEditorHelper.GetFieldInfo(property.propertyPath,
                 property.serializedObject.targetObject);
-        }
 
         /// <summary>
         /// Draws the object field and picker button for the property

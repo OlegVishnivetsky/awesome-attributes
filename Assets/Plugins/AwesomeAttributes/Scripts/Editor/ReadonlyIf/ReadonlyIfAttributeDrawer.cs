@@ -18,9 +18,7 @@ namespace AwesomeAttributes.Editor
                 GUI.enabled = true;
             }
             else
-            {
                 EditorGUI.PropertyField(position, property, label);
-            }
         }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)

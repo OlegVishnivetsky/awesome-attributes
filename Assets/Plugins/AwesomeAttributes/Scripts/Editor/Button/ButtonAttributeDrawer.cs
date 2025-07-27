@@ -113,6 +113,7 @@ namespace AwesomeAttributes.Editor
                     if (int.TryParse(pathParts[i + 1].Substring(indexStart, indexEnd - indexStart), out int index))
                     {
                         target = GetArrayElementAtIndex(arrayPath, index, target, property);
+                        
                         if (target == null)
                         {
                             Debug.LogWarning($"Failed to resolve array element at index {index} for path {arrayPath}");
@@ -170,7 +171,8 @@ namespace AwesomeAttributes.Editor
 
         private MethodInfo GetMethodInfo(string methodName, object targetObject)
         {
-            if (targetObject == null) return null;
+            if (targetObject == null) 
+                return null;
 
             return targetObject.GetType().GetMethod(methodName,
                 BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static);

@@ -12,21 +12,15 @@ namespace AwesomeAttributes.Editor
         protected override void DrawProperty(Rect position, SerializedProperty property, GUIContent label)
         {
             if (isPropertyShown)
-            {
-                EditorGUI.PropertyField(position, property, label);
-            }
+                EditorGUI.PropertyField(position, property, label, true);
         }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
             if (isPropertyShown)
-            {
-                return base.GetPropertyHeight(property, label);
-            }
+                return EditorGUI.GetPropertyHeight(property, label,true);
             else
-            {
                 return 0f;
-            }
         }
     }
 }

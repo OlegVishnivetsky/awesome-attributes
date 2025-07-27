@@ -11,10 +11,8 @@ namespace AwesomeAttributes.Editor
             EditorGUI.BeginProperty(position, label, property);
 
             if (property.propertyType == SerializedPropertyType.Gradient)
-            {
                 property.gradientValue = EditorGUI.GradientField(position, label, property.gradientValue);
-            }
-
+            
             EditorGUI.EndProperty();
         }
     }

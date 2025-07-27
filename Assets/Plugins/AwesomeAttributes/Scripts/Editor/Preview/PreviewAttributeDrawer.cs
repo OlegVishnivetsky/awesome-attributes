@@ -61,9 +61,7 @@ namespace AwesomeAttributes.Editor
             float baseHeight = EditorGUIUtility.singleLineHeight;
 
             if (foldoutState)
-            {
                 baseHeight += 72f;
-            }
 
             return baseHeight;
         }

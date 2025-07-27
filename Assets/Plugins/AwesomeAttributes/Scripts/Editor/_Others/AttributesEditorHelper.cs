@@ -92,11 +92,11 @@ namespace AwesomeAttributes.Editor
         {
             FieldInfo fieldInfoToReturn = targetObject.GetType()
                 .GetField(fieldName,
-                  BindingFlags.Instance
-                | BindingFlags.Public
-                | BindingFlags.NonPublic
-                | BindingFlags.Static
-                | BindingFlags.DeclaredOnly);
+                    BindingFlags.Instance
+                    | BindingFlags.Public
+                    | BindingFlags.NonPublic
+                    | BindingFlags.Static
+                    | BindingFlags.FlattenHierarchy);
 
             return fieldInfoToReturn;
         }
